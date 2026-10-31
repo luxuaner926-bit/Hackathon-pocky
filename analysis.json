@@ -1,0 +1,925 @@
+﻿[
+    {
+        "key":  "direct",
+        "distance":  816,
+        "seconds":  682,
+        "stairs":  1,
+        "turns":  9,
+        "mainRoadM":  337,
+        "steps":  [
+                      {
+                          "m":  28,
+                          "text":  "Walk north\nRestricted-usage road",
+                          "lat":  1.370965,
+                          "lng":  103.8442503
+                      },
+                      {
+                          "m":  101,
+                          "text":  "Turn right\nPartial restricted-usage road",
+                          "lat":  1.3711628999999999,
+                          "lng":  103.8442704
+                      },
+                      {
+                          "m":  61,
+                          "text":  "Turn right towards Ang Mo Kio Ave 6",
+                          "lat":  1.3711449,
+                          "lng":  103.845112
+                      },
+                      {
+                          "m":  55,
+                          "text":  null,
+                          "lat":  1.3707258999999998,
+                          "lng":  103.84522849999999
+                      },
+                      {
+                          "m":  42,
+                          "text":  "Turn right towards Ang Mo Kio Ave 6\nTake the steps",
+                          "lat":  1.370796,
+                          "lng":  103.8457143
+                      },
+                      {
+                          "m":  337,
+                          "text":  "Turn right onto Ang Mo Kio Ave 6",
+                          "lat":  1.3708048,
+                          "lng":  103.84556029999999
+                      },
+                      {
+                          "m":  101,
+                          "text":  "Turn right towards Ang Mo Kio Central 2",
+                          "lat":  1.3737678,
+                          "lng":  103.845225
+                      },
+                      {
+                          "m":  53,
+                          "text":  "Slight left onto Ang Mo Kio Central 2",
+                          "lat":  1.3741461,
+                          "lng":  103.84595039999999
+                      },
+                      {
+                          "m":  41,
+                          "text":  "Turn left\nDestination will be on the left",
+                          "lat":  1.3744843,
+                          "lng":  103.84610389999999
+                      }
+                  ],
+        "samples":  [
+                        {
+                            "m":  0,
+                            "lat":  1.37096,
+                            "lng":  103.84425,
+                            "sky":  null,
+                            "img":  null
+                        },
+                        {
+                            "m":  40,
+                            "lat":  1.371144,
+                            "lng":  103.844428,
+                            "sky":  null,
+                            "img":  null
+                        },
+                        {
+                            "m":  80,
+                            "lat":  1.371162,
+                            "lng":  103.844778,
+                            "sky":  0.443,
+                            "img":  "photos/sky/direct-03.jpg"
+                        },
+                        {
+                            "m":  120,
+                            "lat":  1.371113,
+                            "lng":  103.845109,
+                            "sky":  0.004,
+                            "img":  "photos/sky/direct-04.jpg"
+                        },
+                        {
+                            "m":  160,
+                            "lat":  1.370848,
+                            "lng":  103.845216,
+                            "sky":  0.772,
+                            "img":  "photos/sky/direct-05.jpg"
+                        },
+                        {
+                            "m":  200,
+                            "lat":  1.37076,
+                            "lng":  103.845437,
+                            "sky":  0.861,
+                            "img":  "photos/sky/direct-06.jpg"
+                        },
+                        {
+                            "m":  240,
+                            "lat":  1.37074,
+                            "lng":  103.845735,
+                            "sky":  0.64,
+                            "img":  "photos/sky/direct-07.jpg"
+                        },
+                        {
+                            "m":  280,
+                            "lat":  1.370904,
+                            "lng":  103.845572,
+                            "sky":  0.335,
+                            "img":  "photos/sky/direct-08.jpg"
+                        },
+                        {
+                            "m":  320,
+                            "lat":  1.371257,
+                            "lng":  103.845582,
+                            "sky":  0.84,
+                            "img":  "photos/sky/direct-09.jpg"
+                        },
+                        {
+                            "m":  360,
+                            "lat":  1.3716,
+                            "lng":  103.845499,
+                            "sky":  0.843,
+                            "img":  "photos/sky/direct-10.jpg"
+                        },
+                        {
+                            "m":  400,
+                            "lat":  1.371959,
+                            "lng":  103.845482,
+                            "sky":  0.836,
+                            "img":  "photos/sky/direct-11.jpg"
+                        },
+                        {
+                            "m":  440,
+                            "lat":  1.372317,
+                            "lng":  103.8455,
+                            "sky":  0.918,
+                            "img":  "photos/sky/direct-12.jpg"
+                        },
+                        {
+                            "m":  480,
+                            "lat":  1.372668,
+                            "lng":  103.845559,
+                            "sky":  0.539,
+                            "img":  "photos/sky/direct-13.jpg"
+                        },
+                        {
+                            "m":  520,
+                            "lat":  1.373025,
+                            "lng":  103.845522,
+                            "sky":  0.325,
+                            "img":  "photos/sky/direct-14.jpg"
+                        },
+                        {
+                            "m":  560,
+                            "lat":  1.373358,
+                            "lng":  103.845398,
+                            "sky":  0.009,
+                            "img":  "photos/sky/direct-15.jpg"
+                        },
+                        {
+                            "m":  600,
+                            "lat":  1.373689,
+                            "lng":  103.845262,
+                            "sky":  0.904,
+                            "img":  "photos/sky/direct-16.jpg"
+                        },
+                        {
+                            "m":  640,
+                            "lat":  1.373975,
+                            "lng":  103.845391,
+                            "sky":  0.726,
+                            "img":  "photos/sky/direct-17.jpg"
+                        },
+                        {
+                            "m":  680,
+                            "lat":  1.374105,
+                            "lng":  103.845726,
+                            "sky":  0.262,
+                            "img":  "photos/sky/direct-18.jpg"
+                        },
+                        {
+                            "m":  720,
+                            "lat":  1.374223,
+                            "lng":  103.846009,
+                            "sky":  0.541,
+                            "img":  "photos/sky/direct-19.jpg"
+                        },
+                        {
+                            "m":  760,
+                            "lat":  1.374478,
+                            "lng":  103.846086,
+                            "sky":  0.783,
+                            "img":  "photos/sky/direct-20.jpg"
+                        }
+                    ]
+    },
+    {
+        "key":  "estate",
+        "distance":  1125,
+        "seconds":  942,
+        "stairs":  1,
+        "turns":  18,
+        "mainRoadM":  76,
+        "steps":  [
+                      {
+                          "m":  28,
+                          "text":  "Walk north\nRestricted-usage road",
+                          "lat":  1.370965,
+                          "lng":  103.8442503
+                      },
+                      {
+                          "m":  101,
+                          "text":  "Turn right\nPartial restricted-usage road",
+                          "lat":  1.3711628999999999,
+                          "lng":  103.8442704
+                      },
+                      {
+                          "m":  61,
+                          "text":  "Turn right towards Ang Mo Kio Ave 6",
+                          "lat":  1.3711449,
+                          "lng":  103.845112
+                      },
+                      {
+                          "m":  55,
+                          "text":  null,
+                          "lat":  1.3707258999999998,
+                          "lng":  103.84522849999999
+                      },
+                      {
+                          "m":  42,
+                          "text":  "Turn right towards Ang Mo Kio Ave 6\nTake the steps",
+                          "lat":  1.370796,
+                          "lng":  103.8457143
+                      },
+                      {
+                          "m":  76,
+                          "text":  "Turn right onto Ang Mo Kio Ave 6",
+                          "lat":  1.3708048,
+                          "lng":  103.84556029999999
+                      },
+                      {
+                          "m":  28,
+                          "text":  "Turn right",
+                          "lat":  1.3714899,
+                          "lng":  103.84556429999999
+                      },
+                      {
+                          "m":  30,
+                          "text":  "Turn left",
+                          "lat":  1.371507,
+                          "lng":  103.8457208
+                      },
+                      {
+                          "m":  63,
+                          "text":  "Turn right",
+                          "lat":  1.3717794,
+                          "lng":  103.84569599999999
+                      },
+                      {
+                          "m":  74,
+                          "text":  "Turn left",
+                          "lat":  1.3718462999999999,
+                          "lng":  103.8462594
+                      },
+                      {
+                          "m":  107,
+                          "text":  "Turn right",
+                          "lat":  1.3725083999999999,
+                          "lng":  103.8461911
+                      },
+                      {
+                          "m":  45,
+                          "text":  "Turn left towards Ang Mo Kio Central 2",
+                          "lat":  1.3726897999999998,
+                          "lng":  103.84676239999999
+                      },
+                      {
+                          "m":  26,
+                          "text":  "Turn right towards Ang Mo Kio Central 2",
+                          "lat":  1.3726486999999998,
+                          "lng":  103.847161
+                      },
+                      {
+                          "m":  32,
+                          "text":  null,
+                          "lat":  1.3725986,
+                          "lng":  103.847369
+                      },
+                      {
+                          "m":  37,
+                          "text":  "Continue onto Ang Mo Kio Central 2",
+                          "lat":  1.3726846,
+                          "lng":  103.8472036
+                      },
+                      {
+                          "m":  221,
+                          "text":  "Turn left to stay on Ang Mo Kio Central 2",
+                          "lat":  1.373105,
+                          "lng":  103.8470694
+                      },
+                      {
+                          "m":  49,
+                          "text":  "Turn right to stay on Ang Mo Kio Central 2",
+                          "lat":  1.3741415,
+                          "lng":  103.8461351
+                      },
+                      {
+                          "m":  51,
+                          "text":  "Turn left\nDestination will be on the left",
+                          "lat":  1.3744998,
+                          "lng":  103.846228
+                      }
+                  ],
+        "samples":  [
+                        {
+                            "m":  0,
+                            "lat":  1.37096,
+                            "lng":  103.84425,
+                            "sky":  null,
+                            "img":  null
+                        },
+                        {
+                            "m":  40,
+                            "lat":  1.371144,
+                            "lng":  103.844428,
+                            "sky":  null,
+                            "img":  null
+                        },
+                        {
+                            "m":  80,
+                            "lat":  1.371162,
+                            "lng":  103.844778,
+                            "sky":  0.443,
+                            "img":  "photos/sky/estate-03.jpg"
+                        },
+                        {
+                            "m":  120,
+                            "lat":  1.371113,
+                            "lng":  103.845109,
+                            "sky":  0.004,
+                            "img":  "photos/sky/estate-04.jpg"
+                        },
+                        {
+                            "m":  160,
+                            "lat":  1.370848,
+                            "lng":  103.845216,
+                            "sky":  0.772,
+                            "img":  "photos/sky/estate-05.jpg"
+                        },
+                        {
+                            "m":  200,
+                            "lat":  1.37076,
+                            "lng":  103.845437,
+                            "sky":  0.861,
+                            "img":  "photos/sky/estate-06.jpg"
+                        },
+                        {
+                            "m":  240,
+                            "lat":  1.37074,
+                            "lng":  103.845735,
+                            "sky":  0.64,
+                            "img":  "photos/sky/estate-07.jpg"
+                        },
+                        {
+                            "m":  280,
+                            "lat":  1.370904,
+                            "lng":  103.845572,
+                            "sky":  0.335,
+                            "img":  "photos/sky/estate-08.jpg"
+                        },
+                        {
+                            "m":  320,
+                            "lat":  1.371257,
+                            "lng":  103.845578,
+                            "sky":  0.841,
+                            "img":  "photos/sky/estate-09.jpg"
+                        },
+                        {
+                            "m":  360,
+                            "lat":  1.371506,
+                            "lng":  103.845685,
+                            "sky":  0.107,
+                            "img":  "photos/sky/estate-10.jpg"
+                        },
+                        {
+                            "m":  400,
+                            "lat":  1.371787,
+                            "lng":  103.845753,
+                            "sky":  0.287,
+                            "img":  "photos/sky/estate-11.jpg"
+                        },
+                        {
+                            "m":  440,
+                            "lat":  1.371831,
+                            "lng":  103.846109,
+                            "sky":  0.355,
+                            "img":  "photos/sky/estate-12.jpg"
+                        },
+                        {
+                            "m":  480,
+                            "lat":  1.372057,
+                            "lng":  103.846238,
+                            "sky":  0.833,
+                            "img":  "photos/sky/estate-13.jpg"
+                        },
+                        {
+                            "m":  520,
+                            "lat":  1.372414,
+                            "lng":  103.8462,
+                            "sky":  0.809,
+                            "img":  "photos/sky/estate-14.jpg"
+                        },
+                        {
+                            "m":  560,
+                            "lat":  1.372498,
+                            "lng":  103.846389,
+                            "sky":  0.023,
+                            "img":  "photos/sky/estate-15.jpg"
+                        },
+                        {
+                            "m":  600,
+                            "lat":  1.372735,
+                            "lng":  103.846526,
+                            "sky":  0.333,
+                            "img":  "photos/sky/estate-16.jpg"
+                        },
+                        {
+                            "m":  640,
+                            "lat":  1.372655,
+                            "lng":  103.846813,
+                            "sky":  0.522,
+                            "img":  "photos/sky/estate-17.jpg"
+                        },
+                        {
+                            "m":  680,
+                            "lat":  1.372625,
+                            "lng":  103.847093,
+                            "sky":  0.608,
+                            "img":  "photos/sky/estate-18.jpg"
+                        },
+                        {
+                            "m":  720,
+                            "lat":  1.372654,
+                            "lng":  103.847348,
+                            "sky":  0.745,
+                            "img":  "photos/sky/estate-19.jpg"
+                        },
+                        {
+                            "m":  760,
+                            "lat":  1.372872,
+                            "lng":  103.847144,
+                            "sky":  0.335,
+                            "img":  "photos/sky/estate-20.jpg"
+                        },
+                        {
+                            "m":  800,
+                            "lat":  1.373087,
+                            "lng":  103.846959,
+                            "sky":  0.413,
+                            "img":  "photos/sky/estate-21.jpg"
+                        },
+                        {
+                            "m":  840,
+                            "lat":  1.373045,
+                            "lng":  103.846602,
+                            "sky":  0.553,
+                            "img":  "photos/sky/estate-22.jpg"
+                        },
+                        {
+                            "m":  880,
+                            "lat":  1.373067,
+                            "lng":  103.846277,
+                            "sky":  0.439,
+                            "img":  "photos/sky/estate-23.jpg"
+                        },
+                        {
+                            "m":  920,
+                            "lat":  1.373422,
+                            "lng":  103.846231,
+                            "sky":  0.557,
+                            "img":  "photos/sky/estate-24.jpg"
+                        },
+                        {
+                            "m":  960,
+                            "lat":  1.373779,
+                            "lng":  103.84619,
+                            "sky":  0.795,
+                            "img":  "photos/sky/estate-25.jpg"
+                        },
+                        {
+                            "m":  1000,
+                            "lat":  1.374135,
+                            "lng":  103.846141,
+                            "sky":  0.695,
+                            "img":  "photos/sky/estate-26.jpg"
+                        },
+                        {
+                            "m":  1040,
+                            "lat":  1.374453,
+                            "lng":  103.846232,
+                            "sky":  0.6,
+                            "img":  "photos/sky/estate-27.jpg"
+                        },
+                        {
+                            "m":  1080,
+                            "lat":  1.37446,
+                            "lng":  103.84592,
+                            "sky":  0.863,
+                            "img":  "photos/sky/estate-28.jpg"
+                        }
+                    ]
+    },
+    {
+        "key":  "west",
+        "distance":  1650,
+        "seconds":  1420,
+        "stairs":  5,
+        "turns":  17,
+        "mainRoadM":  481,
+        "steps":  [
+                      {
+                          "m":  96,
+                          "text":  "Walk north towards Ang Mo Kio Street 12\nRestricted-usage road",
+                          "lat":  1.370965,
+                          "lng":  103.8442503
+                      },
+                      {
+                          "m":  125,
+                          "text":  "Turn left onto Ang Mo Kio Street 12",
+                          "lat":  1.3719439999999998,
+                          "lng":  103.844354
+                      },
+                      {
+                          "m":  87,
+                          "text":  "Turn right\nTake the steps",
+                          "lat":  1.3721122,
+                          "lng":  103.8431995
+                      },
+                      {
+                          "m":  100,
+                          "text":  "Turn right",
+                          "lat":  1.3727517999999999,
+                          "lng":  103.8433759
+                      },
+                      {
+                          "m":  52,
+                          "text":  "Turn left\nTake the steps",
+                          "lat":  1.3732985,
+                          "lng":  103.84392899999999
+                      },
+                      {
+                          "m":  70,
+                          "text":  "Turn right towards Ang Mo Kio Street 12",
+                          "lat":  1.3730432,
+                          "lng":  103.8439142
+                      },
+                      {
+                          "m":  87,
+                          "text":  "Turn left towards Ang Mo Kio Street 12\nTake the steps",
+                          "lat":  1.3727517999999999,
+                          "lng":  103.8433759
+                      },
+                      {
+                          "m":  196,
+                          "text":  "Turn left onto Ang Mo Kio Street 12",
+                          "lat":  1.3721223,
+                          "lng":  103.8432045
+                      },
+                      {
+                          "m":  47,
+                          "text":  "Slight right to stay on Ang Mo Kio Street 12",
+                          "lat":  1.3717472,
+                          "lng":  103.844896
+                      },
+                      {
+                          "m":  144,
+                          "text":  "Turn right onto Ang Mo Kio Ave 6",
+                          "lat":  1.3718983999999999,
+                          "lng":  103.84525719999999
+                      },
+                      {
+                          "m":  28,
+                          "text":  "Turn right towards Ang Mo Kio Ave 6\nTake the steps",
+                          "lat":  1.3706528,
+                          "lng":  103.8453857
+                      },
+                      {
+                          "m":  46,
+                          "text":  null,
+                          "lat":  1.370736,
+                          "lng":  103.8453085
+                      },
+                      {
+                          "m":  42,
+                          "text":  "Turn right towards Ang Mo Kio Ave 6\nTake the steps",
+                          "lat":  1.370796,
+                          "lng":  103.8457143
+                      },
+                      {
+                          "m":  337,
+                          "text":  "Turn right onto Ang Mo Kio Ave 6",
+                          "lat":  1.3708048,
+                          "lng":  103.84556029999999
+                      },
+                      {
+                          "m":  101,
+                          "text":  "Turn right towards Ang Mo Kio Central 2",
+                          "lat":  1.3737678,
+                          "lng":  103.845225
+                      },
+                      {
+                          "m":  53,
+                          "text":  "Slight left onto Ang Mo Kio Central 2",
+                          "lat":  1.3741461,
+                          "lng":  103.84595039999999
+                      },
+                      {
+                          "m":  41,
+                          "text":  "Turn left\nDestination will be on the left",
+                          "lat":  1.3744843,
+                          "lng":  103.84610389999999
+                      }
+                  ],
+        "samples":  [
+                        {
+                            "m":  0,
+                            "lat":  1.37096,
+                            "lng":  103.84425,
+                            "sky":  null,
+                            "img":  null
+                        },
+                        {
+                            "m":  40,
+                            "lat":  1.371317,
+                            "lng":  103.844286,
+                            "sky":  0.351,
+                            "img":  "photos/sky/west-02.jpg"
+                        },
+                        {
+                            "m":  80,
+                            "lat":  1.371675,
+                            "lng":  103.844323,
+                            "sky":  0.566,
+                            "img":  "photos/sky/west-03.jpg"
+                        },
+                        {
+                            "m":  120,
+                            "lat":  1.371954,
+                            "lng":  103.844258,
+                            "sky":  0.593,
+                            "img":  "photos/sky/west-04.jpg"
+                        },
+                        {
+                            "m":  160,
+                            "lat":  1.372006,
+                            "lng":  103.843903,
+                            "sky":  0.43,
+                            "img":  "photos/sky/west-05.jpg"
+                        },
+                        {
+                            "m":  200,
+                            "lat":  1.372059,
+                            "lng":  103.843547,
+                            "sky":  0.352,
+                            "img":  "photos/sky/west-06.jpg"
+                        },
+                        {
+                            "m":  240,
+                            "lat":  1.372118,
+                            "lng":  103.843202,
+                            "sky":  0.57,
+                            "img":  "photos/sky/west-07.jpg"
+                        },
+                        {
+                            "m":  280,
+                            "lat":  1.372463,
+                            "lng":  103.843305,
+                            "sky":  null,
+                            "img":  null
+                        },
+                        {
+                            "m":  320,
+                            "lat":  1.372764,
+                            "lng":  103.843441,
+                            "sky":  0.308,
+                            "img":  "photos/sky/west-09.jpg"
+                        },
+                        {
+                            "m":  360,
+                            "lat":  1.372896,
+                            "lng":  103.843772,
+                            "sky":  0.586,
+                            "img":  "photos/sky/west-10.jpg"
+                        },
+                        {
+                            "m":  400,
+                            "lat":  1.373193,
+                            "lng":  103.84395,
+                            "sky":  0.417,
+                            "img":  "photos/sky/west-11.jpg"
+                        },
+                        {
+                            "m":  440,
+                            "lat":  1.373167,
+                            "lng":  103.843813,
+                            "sky":  0.557,
+                            "img":  "photos/sky/west-12.jpg"
+                        },
+                        {
+                            "m":  480,
+                            "lat":  1.372918,
+                            "lng":  103.843806,
+                            "sky":  0.532,
+                            "img":  "photos/sky/west-13.jpg"
+                        },
+                        {
+                            "m":  520,
+                            "lat":  1.37277,
+                            "lng":  103.843482,
+                            "sky":  0.365,
+                            "img":  "photos/sky/west-14.jpg"
+                        },
+                        {
+                            "m":  560,
+                            "lat":  1.372504,
+                            "lng":  103.84331,
+                            "sky":  null,
+                            "img":  null
+                        },
+                        {
+                            "m":  600,
+                            "lat":  1.372159,
+                            "lng":  103.843211,
+                            "sky":  0.57,
+                            "img":  "photos/sky/west-16.jpg"
+                        },
+                        {
+                            "m":  640,
+                            "lat":  1.371903,
+                            "lng":  103.843369,
+                            "sky":  0.525,
+                            "img":  "photos/sky/west-17.jpg"
+                        },
+                        {
+                            "m":  680,
+                            "lat":  1.371848,
+                            "lng":  103.843724,
+                            "sky":  0.402,
+                            "img":  "photos/sky/west-18.jpg"
+                        },
+                        {
+                            "m":  720,
+                            "lat":  1.371793,
+                            "lng":  103.844079,
+                            "sky":  0.482,
+                            "img":  "photos/sky/west-19.jpg"
+                        },
+                        {
+                            "m":  760,
+                            "lat":  1.371758,
+                            "lng":  103.844437,
+                            "sky":  0.585,
+                            "img":  "photos/sky/west-20.jpg"
+                        },
+                        {
+                            "m":  800,
+                            "lat":  1.371711,
+                            "lng":  103.844793,
+                            "sky":  0.646,
+                            "img":  "photos/sky/west-21.jpg"
+                        },
+                        {
+                            "m":  840,
+                            "lat":  1.371857,
+                            "lng":  103.845121,
+                            "sky":  0.558,
+                            "img":  "photos/sky/west-22.jpg"
+                        },
+                        {
+                            "m":  880,
+                            "lat":  1.371696,
+                            "lng":  103.845287,
+                            "sky":  0.85,
+                            "img":  "photos/sky/west-23.jpg"
+                        },
+                        {
+                            "m":  920,
+                            "lat":  1.37134,
+                            "lng":  103.845333,
+                            "sky":  0.828,
+                            "img":  "photos/sky/west-24.jpg"
+                        },
+                        {
+                            "m":  960,
+                            "lat":  1.370984,
+                            "lng":  103.84538,
+                            "sky":  0.878,
+                            "img":  "photos/sky/west-25.jpg"
+                        },
+                        {
+                            "m":  1000,
+                            "lat":  1.370654,
+                            "lng":  103.845369,
+                            "sky":  0.612,
+                            "img":  "photos/sky/west-26.jpg"
+                        },
+                        {
+                            "m":  1040,
+                            "lat":  1.37077,
+                            "lng":  103.845511,
+                            "sky":  0.588,
+                            "img":  "photos/sky/west-27.jpg"
+                        },
+                        {
+                            "m":  1080,
+                            "lat":  1.370812,
+                            "lng":  103.845731,
+                            "sky":  0.064,
+                            "img":  "photos/sky/west-28.jpg"
+                        },
+                        {
+                            "m":  1120,
+                            "lat":  1.370974,
+                            "lng":  103.845598,
+                            "sky":  0.899,
+                            "img":  "photos/sky/west-29.jpg"
+                        },
+                        {
+                            "m":  1160,
+                            "lat":  1.371332,
+                            "lng":  103.845577,
+                            "sky":  0.853,
+                            "img":  "photos/sky/west-30.jpg"
+                        },
+                        {
+                            "m":  1200,
+                            "lat":  1.371674,
+                            "lng":  103.845494,
+                            "sky":  0.69,
+                            "img":  "photos/sky/west-31.jpg"
+                        },
+                        {
+                            "m":  1240,
+                            "lat":  1.372033,
+                            "lng":  103.845486,
+                            "sky":  0.854,
+                            "img":  "photos/sky/west-32.jpg"
+                        },
+                        {
+                            "m":  1280,
+                            "lat":  1.372392,
+                            "lng":  103.845503,
+                            "sky":  0.925,
+                            "img":  "photos/sky/west-33.jpg"
+                        },
+                        {
+                            "m":  1320,
+                            "lat":  1.372742,
+                            "lng":  103.845552,
+                            "sky":  0.605,
+                            "img":  "photos/sky/west-34.jpg"
+                        },
+                        {
+                            "m":  1360,
+                            "lat":  1.373099,
+                            "lng":  103.845513,
+                            "sky":  0.255,
+                            "img":  "photos/sky/west-35.jpg"
+                        },
+                        {
+                            "m":  1400,
+                            "lat":  1.373427,
+                            "lng":  103.845369,
+                            "sky":  0.721,
+                            "img":  "photos/sky/west-36.jpg"
+                        },
+                        {
+                            "m":  1440,
+                            "lat":  1.373755,
+                            "lng":  103.845228,
+                            "sky":  0.953,
+                            "img":  "photos/sky/west-37.jpg"
+                        },
+                        {
+                            "m":  1480,
+                            "lat":  1.374006,
+                            "lng":  103.845459,
+                            "sky":  0.447,
+                            "img":  "photos/sky/west-38.jpg"
+                        },
+                        {
+                            "m":  1520,
+                            "lat":  1.374121,
+                            "lng":  103.845799,
+                            "sky":  0.363,
+                            "img":  "photos/sky/west-39.jpg"
+                        },
+                        {
+                            "m":  1560,
+                            "lat":  1.374237,
+                            "lng":  103.846082,
+                            "sky":  0.671,
+                            "img":  "photos/sky/west-40.jpg"
+                        },
+                        {
+                            "m":  1600,
+                            "lat":  1.37447,
+                            "lng":  103.846012,
+                            "sky":  0.785,
+                            "img":  "photos/sky/west-41.jpg"
+                        }
+                    ]
+    }
+]

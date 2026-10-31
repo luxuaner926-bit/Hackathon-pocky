@@ -1,0 +1,285 @@
+{
+  "routes": [
+    {
+      "legs": [
+        {
+          "steps": [
+            {
+              "distanceMeters": 96,
+              "polyline": {
+                "encodedPolyline": "owjGqayxRcES"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.370965,
+                  "longitude": 103.8442503
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "DEPART",
+                "instructions": "Walk north towards Ang Mo Kio Street 12\nRestricted-usage road"
+              }
+            },
+            {
+              "distanceMeters": 125,
+              "polyline": {
+                "encodedPolyline": "s}jGebyxRa@dF"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3719439999999998,
+                  "longitude": 103.844354
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_LEFT",
+                "instructions": "Turn left onto Ang Mo Kio Street 12"
+              }
+            },
+            {
+              "distanceMeters": 87,
+              "polyline": {
+                "encodedPolyline": "u~jG_{xxRiAUu@M"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3721122,
+                  "longitude": 103.8431995
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_RIGHT",
+                "instructions": "Turn right\nTake the steps"
+              }
+            },
+            {
+              "distanceMeters": 100,
+              "polyline": {
+                "encodedPolyline": "ubkGc|xxRGc@Wo@QO]MG?UB"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3727517999999999,
+                  "longitude": 103.8433759
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_RIGHT",
+                "instructions": "Turn right"
+              }
+            },
+            {
+              "distanceMeters": 52,
+              "polyline": {
+                "encodedPolyline": "cfkGq_yxRFV@EB?BBVBHU"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3732985,
+                  "longitude": 103.84392899999999
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_LEFT",
+                "instructions": "Turn left\nTake the steps"
+              }
+            },
+            {
+              "distanceMeters": 70,
+              "polyline": {
+                "encodedPolyline": "odkGm_yxRVRVh@F^@J"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3730432,
+                  "longitude": 103.8439142
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_RIGHT",
+                "instructions": "Turn right towards Ang Mo Kio Street 12"
+              }
+            },
+            {
+              "distanceMeters": 87,
+              "polyline": {
+                "encodedPolyline": "ubkGc|xxR|Bb@"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3727517999999999,
+                  "longitude": 103.8433759
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_LEFT",
+                "instructions": "Turn left towards Ang Mo Kio Street 12\nTake the steps"
+              }
+            },
+            {
+              "distanceMeters": 196,
+              "polyline": {
+                "encodedPolyline": "w~jG_{xxRf@K\\aE@e@HiAGU"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3721223,
+                  "longitude": 103.8432045
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_LEFT",
+                "instructions": "Turn left onto Ang Mo Kio Street 12"
+              }
+            },
+            {
+              "distanceMeters": 47,
+              "polyline": {
+                "encodedPolyline": "m|jGseyxRQe@MY@G"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3717472,
+                  "longitude": 103.844896
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_SLIGHT_RIGHT",
+                "instructions": "Slight right to stay on Ang Mo Kio Street 12"
+              }
+            },
+            {
+              "distanceMeters": 144,
+              "polyline": {
+                "encodedPolyline": "k}jG{gyxRvDWVBh@E"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3718983999999999,
+                  "longitude": 103.84525719999999
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_RIGHT",
+                "instructions": "Turn right onto Ang Mo Kio Ave 6"
+              }
+            },
+            {
+              "distanceMeters": 28,
+              "polyline": {
+                "encodedPolyline": "qujGuhyxRCRG?EC"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3706528,
+                  "longitude": 103.8453857
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_RIGHT",
+                "instructions": "Turn right towards Ang Mo Kio Ave 6\nTake the steps"
+              }
+            },
+            {
+              "distanceMeters": 46,
+              "polyline": {
+                "encodedPolyline": "cvjGehyxRKoA"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.370736,
+                  "longitude": 103.8453085
+                }
+              }
+            },
+            {
+              "distanceMeters": 42,
+              "polyline": {
+                "encodedPolyline": "ovjGujyxRLCCAM@B`@"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.370796,
+                  "longitude": 103.8457143
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_RIGHT",
+                "instructions": "Turn right towards Ang Mo Kio Ave 6\nTake the steps"
+              }
+            },
+            {
+              "distanceMeters": 337,
+              "polyline": {
+                "encodedPolyline": "ovjGwiyxRM?UG{AD[LaAB{BE[IiAFO@c@NQHa@Hi@T"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3708048,
+                  "longitude": 103.84556029999999
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_RIGHT",
+                "instructions": "Turn right onto Ang Mo Kio Ave 6"
+              }
+            },
+            {
+              "distanceMeters": 101,
+              "polyline": {
+                "encodedPolyline": "aikGsgyxRg@_@IUQq@Gi@"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3737678,
+                  "longitude": 103.845225
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_RIGHT",
+                "instructions": "Turn right towards Ang Mo Kio Central 2"
+              }
+            },
+            {
+              "distanceMeters": 53,
+              "polyline": {
+                "encodedPolyline": "mkkGelyxRK@E_@GEg@D"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3741461,
+                  "longitude": 103.84595039999999
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_SLIGHT_LEFT",
+                "instructions": "Slight left onto Ang Mo Kio Central 2"
+              }
+            },
+            {
+              "distanceMeters": 41,
+              "polyline": {
+                "encodedPolyline": "omkGcmyxRFbA"
+              },
+              "startLocation": {
+                "latLng": {
+                  "latitude": 1.3744843,
+                  "longitude": 103.84610389999999
+                }
+              },
+              "navigationInstruction": {
+                "maneuver": "TURN_LEFT",
+                "instructions": "Turn left\nDestination will be on the left"
+              }
+            }
+          ]
+        }
+      ],
+      "distanceMeters": 1650,
+      "duration": "1420s",
+      "polyline": {
+        "encodedPolyline": "owjGqayxRcESa@dFiAUu@MGc@Wo@QO]MG?UBFV@EB?BBVBHUVRVh@F^@J|Bb@f@K\\aE@e@HiAGUQe@MY@GvDWVBh@ECRG?ECKoALCCAM@B`@M?UG{AD[LaAB{BE[IiAFO@c@NQHa@Hi@Tg@_@IUQq@Gi@K@E_@GEg@DFbA"
+      }
+    }
+  ]
+}

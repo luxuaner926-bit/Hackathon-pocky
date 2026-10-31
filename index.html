@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SilverSight AI</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+  :root { --bg: #eef4f2; --card: #fff; --ink: #10262c; --muted: #52676c; --line: #d3e1de; --teal: #0e6f66; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0d1719; --card: #142227; --ink: #e8f2f0; --muted: #9fb3b7; --line: #263a3e; --teal: #45c2b3; color-scheme: dark; } }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 "Atkinson Hyperlegible", system-ui, sans-serif; padding: 40px max(16px, env(safe-area-inset-left, 0px)); }
+  main { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+  .tag { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--teal); }
+  h1 { margin: 0; font-size: 2.2rem; line-height: 1.1; }
+  p { margin: 0; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  a.card { display: flex; flex-direction: column; gap: 6px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; color: inherit; text-decoration: none; }
+  a.card:hover, a.card:focus-visible { border-color: var(--teal); outline: none; }
+  a.card b { font-size: 1.1rem; }
+  a.card span { color: var(--teal); font-weight: 700; font-size: .9rem; margin-top: auto; }
+  .note { font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+  <div class="tag">AR5958A Hackathon · 24-hour build</div>
+  <h1>SilverSight AI</h1>
+  <p>Every turn, made clear. A visual wayfinding companion for older residents, piloted on a real walk from Block 124 Ang Mo Kio Ave 6 to Ang Mo Kio Polyclinic.</p>
+  <div class="grid">
+    <a class="card" href="phone-and-watch.html"><b>Phone &amp; Watch app</b><p>Walking profile, ranked routes, landmark-guided walking, photo help and the Apple Watch companion.</p><span>Open demo →</span></a>
+    <a class="card" href="planner-view.html"><b>Route analysis &amp; team view</b><p>Steps, shade and risk scoring for three routes, overhead Street View evidence and the review status of each turn.</p><span>Open demo →</span></a>
+    <a class="card" href="docs/SilverSight_AI_Concept_Proposal.pdf"><b>Concept proposal</b><p>The original 4-page proposal.</p><span>Open PDF →</span></a>
+  </div>
+  <p class="note">Route data: Google Routes API. Photos and maps: Google Street View Static API and Maps Static API, © Google 2021–2024. Nothing has been walked on site yet. See README.md for details.</p>
+</main>
+</body>
+</html>

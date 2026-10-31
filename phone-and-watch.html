@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style><title>SilverSight Phone &amp; Watch</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+  /* Layout: a showcase stage with a live phone and a synced watch side by side; devices stack at phone width */
+  :root {
+    --page: #e9f1ef; --page-ink: #11262c; --page-muted: #4f646a; --page-line: #cddbd8;
+    /* device screens keep one light look, like the reference mock-ups */
+    --d-bg: #f3f8f7; --d-card: #ffffff; --d-ink: #10262c; --d-muted: #5b6e73; --d-line: #dde8e6;
+    --teal: #0e6f66; --teal-ink: #ffffff; --mint: #e2f2ee; --aqua: #26d3c0;
+    --red: #d93a3f; --red-soft: #fde7e7; --amber: #b86e00; --amber-soft: #fff1d6; --green: #1f8a4c; --green-soft: #def3e5;
+    --sun: #f0a43a; --blue: #2f80ed;
+    --font: "Atkinson Hyperlegible", -apple-system, "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --page: #0d1719; --page-ink: #e8f2f0; --page-muted: #9fb3b7; --page-line: #24373b; color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --page: #0d1719; --page-ink: #e8f2f0; --page-muted: #9fb3b7; --page-line: #24373b; color-scheme: dark; }
+
+  body {
+    background: var(--page); color: var(--page-ink); font-family: var(--font); font-size: 15px; line-height: 1.4;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding-block: 24px 40px; display: flex; flex-direction: column; gap: 22px; }
+  .intro { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; }
+  .intro h1 { margin: 0; font-size: 1.9rem; line-height: 1.1; text-wrap: balance; }
+  .intro p { margin: 4px 0 0; color: var(--page-muted); max-width: 60ch; }
+  .tag { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--page-muted); }
+  .stage { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 40px 56px; }
+  .side { display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 300px; }
+  .side p { margin: 0; font-size: 0.85rem; color: var(--page-muted); text-align: center; }
+  .side h2 { margin: 0; font-size: 1rem; }
+
+  /* ---------- Phone ---------- */
+  .phone { width: 390px; max-width: 100%; height: 820px; border-radius: 56px; background: #0b1012; padding: 11px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.35), inset 0 0 0 2px #2a3236; }
+  .screen { position: relative; height: 100%; border-radius: 46px; overflow: hidden; background: var(--d-bg); color: var(--d-ink); font-size: 16px; display: flex; flex-direction: column; }
+  .screen.large { font-size: 18.5px; }
+  .statusbar { position: absolute; inset: 0 0 auto; height: 46px; display: flex; justify-content: space-between; align-items: center; padding: 6px 30px 0; font-size: 14px; font-weight: 700; z-index: 6; pointer-events: none; }
+  .statusbar.light { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
+  .statusbar .island { position: absolute; left: 50%; top: 10px; width: 110px; height: 30px; background: #000; border-radius: 20px; transform: translateX(-50%); }
+  .statusbar svg { width: 46px; height: 12px; }
+  .content { flex: 1; overflow-y: auto; padding: 54px 18px 18px; display: flex; flex-direction: column; gap: 14px; }
+  .content.bleed { padding: 0; gap: 0; }
+  .content::-webkit-scrollbar { width: 0; }
+
+  .s-title { font-size: 1.55em; font-weight: 700; line-height: 1.15; margin: 0; text-wrap: balance; }
+  .s-sub { color: var(--d-muted); margin: 0; font-size: 0.92em; }
+  .muted { color: var(--d-muted); }
+  .small { font-size: 0.8em; }
+  .row { display: flex; align-items: center; gap: 10px; }
+  .between { justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo svg { width: 34px; height: 34px; }
+  .logo b { font-size: 1.35em; display: block; line-height: 1.1; }
+
+  button { font: inherit; color: inherit; }
+  .btn { width: 100%; min-height: 56px; border-radius: 16px; border: 0; font-weight: 700; font-size: 1.02em; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 16px; }
+  .btn svg { width: 22px; height: 22px; flex: none; }
+  .btn.primary { background: var(--teal); color: var(--teal-ink); }
+  .btn.ghost { background: var(--d-card); border: 1.5px solid var(--d-line); color: var(--d-ink); }
+  .btn.danger { background: var(--red); color: #fff; }
+  .btn.ok { background: var(--green); color: #fff; }
+  .btn.no { background: var(--red-soft); color: var(--red); }
+  .icon-btn { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--d-card); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; flex: none; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  .icon-btn svg { width: 22px; height: 22px; }
+  button:focus-visible, label:focus-within { outline: 3px solid var(--aqua); outline-offset: 2px; }
+
+  .card { background: var(--d-card); border-radius: 18px; padding: 14px; border: 1px solid var(--d-line); }
+  .chip { display: inline-flex; align-items: center; gap: 5px; font-size: 0.74em; font-weight: 700; padding: 4px 9px; border-radius: 999px; background: var(--mint); color: var(--teal); white-space: nowrap; }
+  .chip svg { width: 14px; height: 14px; }
+  .chip.red { background: var(--red-soft); color: var(--red); }
+  .chip.amber { background: var(--amber-soft); color: var(--amber); }
+  .chip.green { background: var(--green-soft); color: var(--green); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* Profile */
+  .dots-progress { display: flex; gap: 8px; align-items: center; }
+  .dots-progress i { width: 8px; height: 8px; border-radius: 50%; background: var(--d-line); }
+  .dots-progress i.on { width: 22px; border-radius: 4px; background: var(--teal); }
+  .pref { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 16px; background: var(--d-card); border: 1.5px solid var(--d-line); cursor: pointer; text-align: left; width: 100%; }
+  .pref[aria-pressed="true"] { border-color: var(--teal); background: #f4fbf9; }
+  .tile { width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; flex: none; }
+  .tile svg { width: 26px; height: 26px; }
+  .pref .txt { flex: 1; min-width: 0; }
+  .pref .txt b { display: block; }
+  .pref .txt span { font-size: 0.8em; color: var(--d-muted); }
+  .switch { width: 44px; height: 26px; border-radius: 13px; background: var(--d-line); position: relative; flex: none; transition: background .2s; }
+  .switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: left .2s; }
+  [aria-pressed="true"] .switch { background: var(--teal); }
+  [aria-pressed="true"] .switch::after { left: 21px; }
+  .seg { display: flex; background: var(--mint); border-radius: 12px; padding: 3px; }
+  .seg button { flex: 1; border: 0; background: none; padding: 8px; border-radius: 10px; font-weight: 700; cursor: pointer; color: var(--teal); }
+  .seg button[aria-pressed="true"] { background: var(--teal); color: #fff; }
+
+  /* Home */
+  .avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--mint); display: flex; align-items: center; justify-content: center; color: var(--teal); border: 0; cursor: pointer; }
+  .avatar svg { width: 24px; height: 24px; }
+  .search { display: flex; align-items: center; gap: 10px; background: var(--d-card); border: 1px solid var(--d-line); border-radius: 14px; padding: 12px 14px; color: var(--d-muted); }
+  .search svg { width: 20px; height: 20px; flex: none; }
+  .dest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .dest { background: var(--d-card); border: 1px solid var(--d-line); border-radius: 18px; min-height: 96px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer; font-weight: 700; color: var(--teal); }
+  .dest svg { width: 34px; height: 34px; }
+  .dest small { font-weight: 400; color: var(--d-muted); font-size: 0.72em; }
+  .saved { display: flex; align-items: center; gap: 12px; background: var(--d-card); border: 1px solid var(--d-line); border-radius: 16px; padding: 8px; cursor: pointer; text-align: left; width: 100%; }
+  .saved img { width: 64px; height: 50px; border-radius: 10px; object-fit: cover; flex: none; }
+  .saved .txt { flex: 1; min-width: 0; }
+  .saved .txt b { display: block; font-size: 0.92em; }
+  .saved .txt span { font-size: 0.78em; color: var(--d-muted); }
+  .saved svg { width: 22px; height: 22px; color: var(--red); flex: none; }
+  .tabbar { display: flex; justify-content: space-around; border-top: 1px solid var(--d-line); background: var(--d-card); padding: 8px 6px 22px; flex: none; }
+  .tabbar button { border: 0; background: none; display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 0.68em; color: var(--d-muted); cursor: pointer; min-width: 60px; }
+  .tabbar button svg { width: 22px; height: 22px; }
+  .tabbar button[aria-current="page"] { color: var(--teal); font-weight: 700; }
+  .sec-h { display: flex; justify-content: space-between; align-items: baseline; font-weight: 700; }
+  .sec-h span { font-weight: 400; font-size: 0.8em; color: var(--teal); }
+
+  /* Route options */
+  .route-head { display: flex; align-items: center; gap: 12px; }
+  .route-head img { width: 64px; height: 52px; border-radius: 12px; object-fit: cover; margin-left: auto; flex: none; }
+  .tabs { display: flex; gap: 6px; background: var(--d-card); border: 1px solid var(--d-line); border-radius: 14px; padding: 4px; }
+  .tabs button { flex: 1; border: 0; background: none; border-radius: 10px; padding: 9px 4px; font-size: 0.82em; font-weight: 700; color: var(--d-muted); cursor: pointer; }
+  .tabs button[aria-pressed="true"] { background: var(--teal); color: #fff; }
+  .hint-bar { display: flex; gap: 8px; align-items: center; font-size: 0.8em; background: var(--mint); color: var(--teal); padding: 9px 12px; border-radius: 12px; }
+  .hint-bar svg { width: 16px; height: 16px; flex: none; }
+  .ropt { background: var(--d-card); border: 1.5px solid var(--d-line); border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 10px; cursor: pointer; text-align: left; width: 100%; }
+  .ropt[aria-pressed="true"] { border: 2.5px solid var(--teal); box-shadow: 0 6px 16px -8px rgba(14,111,102,.45); }
+  .ropt .top { display: flex; gap: 10px; align-items: flex-start; }
+  .ropt .top > svg { width: 30px; height: 30px; color: var(--teal); flex: none; }
+  .ropt .name { font-weight: 700; }
+  .ropt .meta { font-size: 1.25em; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .ropt .meta small { font-size: 0.6em; font-weight: 400; color: var(--d-muted); margin-left: 6px; }
+  .ropt .tick { margin-left: auto; width: 26px; height: 26px; border-radius: 50%; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; flex: none; }
+  .ropt .tick svg { width: 16px; height: 16px; }
+  .ribbon { display: flex; gap: 2px; height: 8px; position: relative; }
+  .ribbon span { flex: 1; border-radius: 2px; }
+  .ribbon .sh { background: var(--teal); } .ribbon .sn { background: var(--sun); } .ribbon .na { background: var(--d-line); }
+  .ribbon i { position: absolute; top: -9px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 8px solid var(--red); transform: translateX(-5px); }
+  .sticky-foot { position: sticky; bottom: 0; padding-top: 8px; background: linear-gradient(to bottom, transparent, var(--d-bg) 30%); }
+
+  /* Walk */
+  .ph { position: relative; overflow: hidden; background: #26343a; }
+  .ph-in { position: absolute; }
+  .ph-in img { width: 100%; height: 100%; display: block; }
+  .ph-none { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #cfe3e0; text-align: center; padding: 24px; background: repeating-linear-gradient(135deg, #2b3b41 0 16px, #31444a 16px 32px); font-size: 0.85em; }
+  .ph-none svg { width: 40px; height: 40px; }
+  .hl { position: absolute; border: 3px solid var(--aqua); border-radius: 12px; box-shadow: 0 0 0 3px rgba(38,211,192,.35), 0 0 22px rgba(38,211,192,.85), inset 0 0 18px rgba(38,211,192,.35); }
+  .hl-tag { position: absolute; transform: translateY(8px); background: rgba(9,58,54,.86); color: #fff; border: 1.5px solid var(--aqua); border-radius: 10px; padding: 5px 9px; font-size: 0.72em; line-height: 1.2; display: flex; gap: 6px; align-items: center; max-width: 70%; }
+  .hl-tag svg { width: 18px; height: 18px; flex: none; }
+  .hl-tag.above { transform: translateY(calc(-100% - 8px)); }
+  @media (prefers-reduced-motion: no-preference) {
+    .hl { animation: glow 2.2s ease-in-out infinite; }
+    @keyframes glow { 50% { box-shadow: 0 0 0 6px rgba(38,211,192,.2), 0 0 30px rgba(38,211,192,1), inset 0 0 18px rgba(38,211,192,.35); } }
+    .chev path { animation: chev 1.6s ease-in-out infinite; }
+    .chev path:nth-child(2) { animation-delay: .2s; } .chev path:nth-child(3) { animation-delay: .4s; }
+    @keyframes chev { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+  }
+  .chev { position: absolute; left: 50%; bottom: 8px; width: 150px; height: 120px; transform: translateX(-50%); filter: drop-shadow(0 0 8px rgba(38,211,192,.9)); pointer-events: none; }
+  .credit { position: absolute; right: 8px; bottom: 8px; font-size: 0.6em; background: rgba(0,0,0,.55); color: #fff; padding: 2px 6px; border-radius: 5px; }
+  .instr { position: absolute; left: 12px; right: 12px; top: 50px; background: var(--d-card); border-radius: 18px; padding: 10px 12px; display: flex; gap: 12px; align-items: center; box-shadow: 0 8px 20px rgba(0,0,0,.2); z-index: 3; }
+  .turn { width: 50px; height: 50px; border-radius: 14px; background: var(--teal); color: #fff; display: flex; align-items: center; justify-content: center; flex: none; }
+  .turn svg { width: 32px; height: 32px; }
+  .instr .t { flex: 1; min-width: 0; }
+  .instr .t b { display: block; font-size: 1.15em; line-height: 1.15; }
+  .instr .t span { font-size: 0.8em; color: var(--d-muted); }
+  .dist { font-weight: 700; font-size: 0.85em; background: var(--mint); color: var(--teal); padding: 6px 9px; border-radius: 10px; flex: none; font-variant-numeric: tabular-nums; }
+  .float-btns { position: absolute; right: 12px; top: 136px; display: flex; flex-direction: column; gap: 10px; z-index: 3; }
+  .float-btns .icon-btn[aria-pressed="true"] { background: var(--teal); color: #fff; }
+  .sheet { background: var(--d-bg); border-radius: 24px 24px 0 0; margin-top: -22px; position: relative; z-index: 2; padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 10px; }
+  .minimap { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--d-line); }
+  .minimap img { width: 100%; display: block; aspect-ratio: 32 / 17; object-fit: cover; }
+  .minimap .next { position: absolute; right: 8px; top: 8px; background: var(--teal); color: #fff; border-radius: 10px; padding: 5px 9px; font-size: 0.72em; font-weight: 700; display: flex; gap: 5px; align-items: center; }
+  .minimap .next svg { width: 16px; height: 16px; }
+  .eta b { font-size: 1.1em; font-variant-numeric: tabular-nums; }
+  .end { width: auto; min-height: 44px; padding: 8px 14px; font-size: 0.85em; border-radius: 12px; }
+  .steps-dots { display: flex; gap: 4px; }
+  .steps-dots i { flex: 1; height: 5px; border-radius: 3px; background: var(--d-line); }
+  .steps-dots i.done { background: var(--teal); } .steps-dots i.now { background: var(--aqua); }
+  .warn-line { display: flex; gap: 8px; align-items: center; background: var(--red-soft); color: var(--red); font-weight: 700; font-size: 0.82em; padding: 8px 10px; border-radius: 12px; }
+  .warn-line.rest { background: var(--green-soft); color: var(--green); }
+  .warn-line svg { width: 20px; height: 20px; flex: none; }
+
+  /* Help */
+  .help-head { display: flex; align-items: center; justify-content: space-between; }
+  .help-head h2 { margin: 0; font-size: 1.2em; }
+  .cam { width: 72px; height: 72px; border-radius: 50%; background: var(--teal); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 0 6px var(--mint); }
+  .cam svg { width: 32px; height: 32px; }
+  .gal { width: 48px; height: 48px; border-radius: 14px; border: 1.5px solid var(--d-line); background: var(--d-card); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--d-ink); }
+  .gal svg { width: 22px; height: 22px; }
+  .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .samples { display: flex; gap: 8px; }
+  .samples button { flex: 1; border: 1.5px solid var(--d-line); border-radius: 12px; padding: 0; overflow: hidden; background: var(--d-card); cursor: pointer; display: flex; flex-direction: column; }
+  .samples img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+  .samples span { font-size: 0.66em; padding: 3px; color: var(--d-muted); }
+  .upload-prev { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 16px; display: block; }
+  .cand { display: flex; gap: 10px; align-items: flex-start; }
+  .cand img { width: 76px; height: 58px; border-radius: 10px; object-fit: cover; flex: none; }
+  .cand b { display: block; }
+  .score { font-size: 0.7em; color: var(--d-muted); font-variant-numeric: tabular-nums; }
+  .list-btn { display: flex; align-items: center; gap: 12px; width: 100%; background: var(--d-card); border: 1px solid var(--d-line); border-radius: 14px; padding: 12px; cursor: pointer; text-align: left; }
+  .list-btn > svg:first-child { width: 22px; height: 22px; color: var(--teal); flex: none; }
+  .list-btn span { flex: 1; }
+  .list-btn > svg:last-child { width: 18px; height: 18px; color: var(--d-muted); }
+  .phone-num { font-size: 1.5em; font-weight: 700; letter-spacing: .04em; user-select: all; font-variant-numeric: tabular-nums; }
+  .spinner { width: 22px; height: 22px; border-radius: 50%; border: 3px solid var(--mint); border-top-color: var(--teal); animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .toast { position: absolute; left: 16px; right: 16px; bottom: 96px; background: #10262c; color: #fff; border-radius: 14px; padding: 12px 14px; font-size: 0.85em; z-index: 10; box-shadow: 0 8px 20px rgba(0,0,0,.3); }
+
+  .big-check { width: 84px; height: 84px; border-radius: 50%; background: var(--green-soft); color: var(--green); display: flex; align-items: center; justify-content: center; align-self: center; }
+  .big-check svg { width: 46px; height: 46px; }
+  .pick { display: flex; flex-direction: column; gap: 8px; }
+  .pick button { min-height: 48px; border-radius: 12px; border: 1.5px solid var(--d-line); background: var(--d-card); text-align: left; padding: 10px 12px; cursor: pointer; display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+  .pick button[aria-pressed="true"] { border-color: var(--teal); background: var(--mint); font-weight: 700; }
+  .pick button[aria-pressed="true"]::after { content: "✓"; color: var(--teal); }
+
+  /* ---------- Watch ---------- */
+  .watch { width: 212px; height: 256px; border-radius: 60px; background: linear-gradient(145deg, #2b3134, #0c0f10); padding: 11px; position: relative; box-shadow: 0 24px 40px -18px rgba(0,0,0,.45); flex: none; }
+  .watch::before { content: ""; position: absolute; right: -9px; top: 62px; width: 11px; height: 40px; border-radius: 5px; background: linear-gradient(90deg, #3a4246, #1a1f21); }
+  .watch::after { content: ""; position: absolute; right: -5px; top: 120px; width: 6px; height: 46px; border-radius: 3px; background: #22292c; }
+  .band { width: 150px; height: 70px; background: linear-gradient(#1f4a46, #163633); flex: none; }
+  .band.top { border-radius: 24px 24px 6px 6px; }
+  .band.bottom { border-radius: 6px 6px 24px 24px; }
+  .wscreen { height: 100%; border-radius: 50px; background: #000; color: #fff; overflow: hidden; padding: 12px 14px 12px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; position: relative; }
+  .wtime { display: flex; justify-content: space-between; font-size: 11px; color: #9fd9d1; font-weight: 700; padding: 0 6px; }
+  .wtime b { color: #fff; }
+  .wturn { width: 56px; height: 56px; border-radius: 50%; background: var(--teal); display: flex; align-items: center; justify-content: center; flex: none; }
+  .wturn svg { width: 34px; height: 34px; }
+  .wtitle { font-size: 17px; font-weight: 700; line-height: 1.1; }
+  .wland { font-size: 12px; color: #9fd9d1; line-height: 1.2; }
+  .wdist { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+  .wdist small { font-size: 11px; color: #aaa; font-weight: 400; }
+  .wbtns { display: flex; gap: 6px; margin-top: auto; }
+  .wbtns button { flex: 1; height: 38px; border-radius: 19px; border: 0; font-weight: 700; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; }
+  .wbtns button svg { width: 16px; height: 16px; }
+  .w-ok { background: var(--aqua); color: #04201d; }
+  .w-q { background: #2a2f31; color: #fff; }
+  .w-warn { background: #4a1416; color: #ff9a9e; border-radius: 10px; font-size: 11px; font-weight: 700; padding: 4px 8px; display: flex; gap: 5px; align-items: center; }
+  .w-warn.rest { background: #113a26; color: #8fe0b0; }
+  .w-warn svg { width: 13px; height: 13px; }
+  .wlist { display: flex; flex-direction: column; gap: 6px; }
+  .wlist button { background: #1c2224; border: 0; color: #fff; border-radius: 14px; min-height: 36px; text-align: left; padding: 6px 10px; font-size: 12.5px; cursor: pointer; display: flex; gap: 8px; align-items: center; }
+  .wlist button svg { width: 16px; height: 16px; color: var(--aqua); flex: none; }
+  .wph { position: relative; height: 112px; border-radius: 16px; }
+  .wdots { display: flex; gap: 3px; justify-content: center; }
+  .wdots i { width: 5px; height: 5px; border-radius: 50%; background: #444; }
+  .wdots i.on { background: var(--aqua); }
+  .buzz-tag { position: absolute; top: 34px; left: 50%; transform: translateX(-50%); background: var(--aqua); color: #04201d; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; opacity: 0; transition: opacity .2s; }
+  .watch.buzz .buzz-tag { opacity: 1; }
+  @media (prefers-reduced-motion: no-preference) {
+    .watch.buzz { animation: buzz .12s linear 4; }
+    @keyframes buzz { 25% { transform: translateX(-2px) rotate(-.6deg); } 75% { transform: translateX(2px) rotate(.6deg); } }
+  }
+  .watch-col { display: flex; flex-direction: column; align-items: center; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 0.78rem; color: var(--page-muted); justify-content: center; }
+  .note { font-size: 0.8rem; color: var(--page-muted); text-align: center; max-width: 70ch; margin: 0 auto; }
+
+  @media (max-width: 520px) {
+    .phone { width: 100%; height: 760px; padding: 0; border-radius: 28px; background: none; box-shadow: none; }
+    .screen { border-radius: 28px; border: 1px solid var(--page-line); }
+    .statusbar .island { display: none; }
+    .intro h1 { font-size: 1.5rem; }
+  }
+</style>
+
+<div class="wrap">
+  <div class="intro">
+    <div>
+      <div class="tag">SilverSight AI · Prototype</div>
+      <h1>Every turn, made clear.</h1>
+      <p>Phone and watch stay in sync. Tap through the phone, or start from the watch. Real route in Ang Mo Kio, built from Google Routes and Street View, not yet walked on site.</p>
+    </div>
+  </div>
+  <div class="stage">
+    <div class="phone"><div class="screen" id="phone"></div></div>
+    <div class="side">
+      <div class="watch-col">
+        <div class="band top" aria-hidden="true"></div>
+        <div class="watch" id="watchCase"><div class="wscreen" id="watch"></div><span class="buzz-tag">Tap tap</span></div>
+        <div class="band bottom" aria-hidden="true"></div>
+      </div>
+      <h2>Apple Watch companion</h2>
+      <p>Shows the next turn and one landmark at a glance. Taps your wrist before each turn so you can keep your phone in your bag.</p>
+    </div>
+  </div>
+  <p class="note">Street View images © Google, 2021–2024. Shade, steps and rest points are estimates from Google data and photos, to be checked on site. Photo matching here compares colours and layout in your browser; the full app would use Gemini.</p>
+</div>
+
+<script>
+/* =================== Data =================== */
+const SAMPLE_M = 40, SHADE_SKY = 0.45;
+const HELPER = { name: "Mei Ling (daughter)", phone: "9123 4567" };
+const DEST = { name: "Ang Mo Kio Polyclinic", line: "21 Ang Mo Kio Central 2", photo: "photos/amk-006.jpg" };
+
+const ROUTES = {
+  comfort: {
+    name: "Comfort route", via: "Past the food centre", distance: 1125, mainRoadM: 76, stairsAt: [245], rest: 2, ramp: true, guided: true,
+    sky: [null,null,0.443,0.004,0.772,0.861,0.64,0.335,0.841,0.107,0.287,0.355,0.833,0.809,0.023,0.333,0.522,0.608,0.745,0.335,0.413,0.553,0.439,0.557,0.795,0.695,0.6,0.863],
+    steps: [
+      { turn: "straight", title: "Walk straight ahead", toward: "Out of Block 124", landmark: "The car park in front of your block", watch: "Car park ahead", metres: 30, photo: null, map: "photos/maps/comfort-1.png" },
+      { turn: "right", title: "Turn right", toward: "Along the car park", landmark: "Green-and-blue building at the far end", watch: "Green-blue building", metres: 260, photo: "photos/amk-002.jpg", credit: "Jun 2022", hl: { x: 23, y: 37, w: 33, h: 14 }, stairs: true, map: "photos/maps/comfort-2.png" },
+      { turn: "right", title: "Turn right", toward: "Onto Ang Mo Kio Ave 6", landmark: "Blue-and-green glass building", watch: "Glass building", metres: 76, photo: "photos/amk-003.jpg", credit: "Sep 2021", hl: { x: 68, y: 20, w: 31, h: 35 }, map: "photos/maps/comfort-3.png" },
+      { turn: "right", title: "Turn right", toward: "Up the path with handrails", landmark: "Colourful pillars at the block", watch: "Colour pillars", metres: 120, photo: "photos/est-04.jpg", credit: "May 2021", hl: { x: 0, y: 40, w: 72, h: 26 }, ramp: true, map: "photos/maps/comfort-4.png" },
+      { turn: "left", title: "Turn left", toward: "Along the covered shop corridor", landmark: "Long roof over the shops", watch: "Shop corridor", metres: 74, photo: "photos/est-05.jpg", credit: "May 2021", hl: { x: 52, y: 4, w: 46, h: 58 }, map: "photos/maps/comfort-5.png" },
+      { turn: "right", title: "Turn right", toward: "Across the plaza", landmark: "Colourful tables and benches", watch: "Colour tables", metres: 247, photo: "photos/est-06.jpg", credit: "May 2021", hl: { x: 62, y: 55, w: 37, h: 30 }, rest: "You can sit at the tables here.", map: "photos/maps/comfort-6.png" },
+      { turn: "left", title: "Turn left", toward: "Past the car park", landmark: "Row of big rain trees", watch: "Big trees", metres: 221, photo: "photos/est-07.jpg", credit: "Jan 2023", hl: { x: 0, y: 0, w: 52, h: 55 }, map: "photos/maps/comfort-7.png" },
+      { turn: "left", title: "Turn left", toward: "Under the white walkway roof", landmark: "White tent roof with a wavy edge", watch: "White tent roof", metres: 100, photo: "photos/amk-006.jpg", credit: "Sep 2021", hl: { x: 1, y: 36, w: 86, h: 16 }, rest: "Bench under the roof.", map: "photos/maps/comfort-8.png" }
+    ]
+  },
+  shortest: {
+    name: "Shortest route", via: "Along Ang Mo Kio Ave 6", distance: 816, mainRoadM: 337, stairsAt: [245], rest: 1, guided: true,
+    sky: [null,null,0.443,0.004,0.772,0.861,0.64,0.335,0.84,0.843,0.836,0.918,0.539,0.325,0.009,0.904,0.726,0.262,0.541,0.783],
+    steps: [
+      { turn: "straight", title: "Walk straight ahead", toward: "Out of Block 124", landmark: "The car park in front of your block", watch: "Car park ahead", metres: 30, photo: null, map: "photos/maps/direct-1.png" },
+      { turn: "right", title: "Turn right", toward: "Along the car park", landmark: "Green-and-blue building at the far end", watch: "Green-blue building", metres: 260, photo: "photos/amk-002.jpg", credit: "Jun 2022", hl: { x: 23, y: 37, w: 33, h: 14 }, stairs: true, map: "photos/maps/direct-2.png" },
+      { turn: "right", title: "Turn right", toward: "Onto Ang Mo Kio Ave 6", landmark: "Blue-and-green glass building", watch: "Glass building", metres: 340, photo: "photos/amk-003.jpg", credit: "Sep 2021", hl: { x: 68, y: 20, w: 31, h: 35 }, map: "photos/maps/direct-3.png" },
+      { turn: "right", title: "Turn right", toward: "At the construction site", landmark: "Blue-and-green construction fence", watch: "Building site", metres: 100, photo: "photos/amk-004.jpg", credit: "Aug 2024", hl: { x: 22, y: 38, w: 76, h: 14 }, map: "photos/maps/direct-4.png" },
+      { turn: "slight-left", title: "Keep slightly left", toward: "Onto Ang Mo Kio Central 2", landmark: "No-entry sign by the tall trees", watch: "Tall trees", metres: 50, photo: "photos/amk-005.jpg", credit: "Jan 2023", hl: { x: 31, y: 38, w: 10, h: 15 }, map: "photos/maps/direct-5.png" },
+      { turn: "left", title: "Turn left", toward: "Under the white walkway roof", landmark: "White tent roof with a wavy edge", watch: "White tent roof", metres: 40, photo: "photos/amk-006.jpg", credit: "Sep 2021", hl: { x: 1, y: 36, w: 86, h: 16 }, rest: "Bench under the roof.", map: "photos/maps/direct-6.png" }
+    ]
+  },
+  park: {
+    name: "Park route", via: "Through Town Garden West", distance: 1650, mainRoadM: 481, stairsAt: [221, 408, 530, 1004, 1078], rest: 0, guided: false,
+    sky: [null,0.351,0.566,0.593,0.43,0.352,0.57,null,0.308,0.586,0.417,0.557,0.532,0.365,null,0.57,0.525,0.402,0.482,0.585,0.646,0.558,0.85,0.828,0.878,0.612,0.588,0.064,0.899,0.853,0.69,0.854,0.925,0.605,0.255,0.721,0.953,0.447,0.363,0.671,0.785]
+  }
+};
+
+const PREFS = [
+  { key: "stairs", label: "Stairs", on: "I prefer to avoid stairs", off: "Stairs are fine", tile: "#fde4e4", color: "#d93a3f", icon: "stairs" },
+  { key: "slopes", label: "Slopes", on: "Prefer gentle slopes", off: "Slopes are fine", tile: "#dff3e6", color: "#1f8a4c", icon: "slope", note: "Ramps seen in photos only" },
+  { key: "rest", label: "Resting points", on: "Yes, I would like resting points", off: "No need", tile: "#e2f2ee", color: "#0e6f66", icon: "bench" },
+  { key: "lighting", label: "Lighting", on: "Prefer well-lit pathways", off: "Daytime walks only", tile: "#fff1d6", color: "#c88a00", icon: "bulb", note: "No lighting data yet" },
+  { key: "shelter", label: "Shelter", on: "Prefer sheltered walkways", off: "Open paths are fine", tile: "#e1ecfb", color: "#2f6fd6", icon: "umbrella" }
+];
+
+const SAMPLES = [
+  { src: "photos/test-a.jpg", label: "Main road" },
+  { src: "photos/test-c.jpg", label: "Plaza" },
+  { src: "photos/test-b.jpg", label: "Walkway" },
+  { src: "photos/test-d.jpg", label: "Mall" }
+];
+
+/* =================== Icons =================== */
+const sv = (p, vb = "0 0 24 24", extra = "") => `<svg viewBox="${vb}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${extra}>${p}</svg>`;
+const I = {
+  leaf: `<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 32C8 16 18 7 34 6c0 17-9 27-25 26z" fill="#0e6f66"/><path d="M8 32C14 22 21 16 29 12" stroke="#7fe0d2" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>`,
+  back: sv('<path d="M15 5l-7 7 7 7"/>'), close: sv('<path d="M6 6l12 12M18 6L6 18"/>'), chevR: sv('<path d="M9 5l7 7-7 7"/>'),
+  speaker: sv('<path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>'),
+  q: sv('<circle cx="12" cy="12" r="10"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7"/><circle cx="12" cy="17" r=".5" fill="currentColor"/>'),
+  camera: sv('<path d="M3 8h4l2-3h6l2 3h4v12H3z"/><circle cx="12" cy="13" r="4"/>'),
+  gallery: sv('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/>'),
+  check: sv('<path d="M5 12.5l4.5 4.5L19 7"/>', "0 0 24 24", 'stroke-width="3"'),
+  x: sv('<path d="M6 6l12 12M18 6L6 18"/>', "0 0 24 24", 'stroke-width="3"'),
+  walk: sv('<circle cx="13" cy="4" r="2"/><path d="M10 21l2-6 3 3v3M8 12l3-4 4 1 2 4M11 8l-1 7"/>'),
+  stairs: sv('<path d="M3 20h5v-5h5v-5h5V5h3"/>'), slope: sv('<path d="M3 19L21 7v12z"/><path d="M8 19v-2"/>'),
+  bench: sv('<path d="M3 11h18M4 15h16M6 15v5M18 15v5M5 11V6h14v5"/>'), bulb: sv('<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/>'),
+  umbrella: sv('<path d="M2 12a10 10 0 0 1 20 0z"/><path d="M12 12v7a2 2 0 0 1-4 0"/>'),
+  roof: sv('<path d="M3 10L12 4l9 6M6 9v11M18 9v11"/>'),
+  sun: sv('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),
+  road: sv('<path d="M7 3L4 21M17 3l3 18M12 4v3M12 11v3M12 18v2"/>'),
+  clinic: `<svg viewBox="0 0 36 36" aria-hidden="true"><rect x="3" y="7" width="30" height="25" rx="5" fill="currentColor"/><path d="M13 7V4h10v3" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M15.5 12h5v5h5v5h-5v5h-5v-5h-5v-5h5z" fill="#fff"/></svg>`,
+  cart: `<svg viewBox="0 0 36 36" aria-hidden="true"><path d="M3 5h5l3 17h17l3-12H10" stroke="currentColor" stroke-width="3" fill="none" stroke-linejoin="round"/><circle cx="13" cy="29" r="2.6" fill="currentColor"/><circle cx="26" cy="29" r="2.6" fill="currentColor"/></svg>`,
+  bus: `<svg viewBox="0 0 36 36" aria-hidden="true"><rect x="7" y="4" width="22" height="24" rx="5" fill="currentColor"/><rect x="10" y="8" width="16" height="8" rx="1.5" fill="#fff"/><circle cx="12.5" cy="22" r="1.8" fill="#fff"/><circle cx="23.5" cy="22" r="1.8" fill="#fff"/><path d="M11 28v4M25 28v4" stroke="currentColor" stroke-width="3"/></svg>`,
+  people: `<svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="13" cy="11" r="5" fill="currentColor"/><circle cx="25" cy="13" r="4" fill="currentColor" opacity=".7"/><path d="M3 31c0-6 4.5-10 10-10s10 4 10 10z" fill="currentColor"/><path d="M22 31c0-4-1-7-3-8.5 1.5-1 3.3-1.5 6-1.5 5 0 8 4 8 10z" fill="currentColor" opacity=".7"/></svg>`,
+  search: sv('<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>'), mic: sv('<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>'),
+  heart: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z" fill="currentColor"/></svg>`,
+  heartO: sv('<path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/>'),
+  home: sv('<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>'), clock: sv('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'),
+  bookmark: sv('<path d="M6 3h12v18l-6-4-6 4z"/>'), user: sv('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>'),
+  redo: sv('<path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/>'), phone: sv('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>'),
+  exit: sv('<path d="M10 4H5v16h5M15 8l4 4-4 4M19 12H9"/>'), info: sv('<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>'),
+  pin: sv('<path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/>'),
+  building: sv('<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M11 21v-3h2v3"/>'),
+  arrow: {
+    straight: sv('<path d="M12 20V5M6 11l6-6 6 6"/>', "0 0 24 24", 'stroke-width="2.8"'),
+    right: sv('<path d="M6 20v-7a4 4 0 0 1 4-4h9M15 5l4 4-4 4"/>', "0 0 24 24", 'stroke-width="2.8"'),
+    left: sv('<path d="M18 20v-7a4 4 0 0 0-4-4H5M9 5L5 9l4 4"/>', "0 0 24 24", 'stroke-width="2.8"'),
+    "slight-left": sv('<path d="M15 20v-6L8 7M8 13V7h6"/>', "0 0 24 24", 'stroke-width="2.8"'),
+    arrive: sv('<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>', "0 0 24 24", 'stroke-width="2.6"')
+  }
+};
+const chevSVG = {
+  straight: `<svg class="chev" viewBox="0 0 150 120" aria-hidden="true"><g fill="none" stroke="#26d3c0" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M35 110l40-22 40 22"/><path d="M42 78l33-18 33 18"/><path d="M48 50l27-15 27 15"/></g></svg>`,
+  right: `<svg class="chev" viewBox="0 0 150 120" aria-hidden="true"><g fill="none" stroke="#26d3c0" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"><path d="M55 115V70a22 22 0 0 1 22-22h40"/><path d="M100 30l20 18-20 18"/></g></svg>`,
+  left: `<svg class="chev" viewBox="0 0 150 120" aria-hidden="true"><g fill="none" stroke="#26d3c0" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"><path d="M95 115V70a22 22 0 0 0-22-22H33"/><path d="M50 30L30 48l20 18"/></g></svg>`,
+  "slight-left": `<svg class="chev" viewBox="0 0 150 120" aria-hidden="true"><g fill="none" stroke="#26d3c0" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"><path d="M90 115V80L55 40"/><path d="M50 65V35h30"/></g></svg>`
+};
+
+/* =================== State =================== */
+const state = {
+  screen: "onboard", prefs: { stairs: true, slopes: true, rest: true, lighting: false, shelter: true }, large: false,
+  sort: "recommended", route: null, step: 0, walking: false, audio: false,
+  helpTab: "photo", upload: null, match: null, watch: "main", flags: new Set(), journeys: [], toast: ""
+};
+try {
+  const s = JSON.parse(localStorage.getItem("ss-app") || "null");
+  if (s) { Object.assign(state.prefs, s.prefs || {}); state.large = !!s.large; state.screen = "home"; }
+} catch (e) {}
+function save() { try { localStorage.setItem("ss-app", JSON.stringify({ prefs: state.prefs, large: state.large })); } catch (e) {} }
+
+/* =================== Route scoring =================== */
+function assess(key) {
+  const r = ROUTES[key], known = r.sky.filter(v => v !== null);
+  const shade = Math.round(100 * known.filter(v => v < SHADE_SKY).length / known.length);
+  let run = 0, longest = 0;
+  for (const v of r.sky) { if (v !== null && v >= SHADE_SKY) longest = Math.max(longest, ++run); else run = 0; }
+  const sunM = longest * SAMPLE_M, stairs = r.stairsAt.length, p = state.prefs;
+  const parts = [
+    { pts: 2 * stairs, w: p.stairs },
+    { pts: 3 * (1 - shade / 100), w: p.shelter },
+    { pts: sunM > 300 ? 2 : sunM > 150 ? 1 : 0, w: p.shelter },
+    { pts: r.distance > 1200 ? 2 : r.distance > 900 ? 1 : 0, w: false },
+    { pts: r.mainRoadM > 300 ? 1 : 0, w: false }
+  ];
+  const raw = parts.reduce((t, x) => t + x.pts, 0);
+  let weighted = parts.reduce((t, x) => t + x.pts * (x.w ? 2 : 1), 0);
+  if (p.rest) weighted -= r.rest;
+  if (p.slopes && r.ramp) weighted -= 0.5;
+  return { key, shade, sunM, stairs, raw, weighted, minutes: Math.round(r.distance / 60), level: raw >= 8 ? "high" : raw >= 4 ? "medium" : "low" };
+}
+function ranked() {
+  const list = Object.keys(ROUTES).map(assess);
+  const by = { recommended: (a, b) => a.weighted - b.weighted, shortest: (a, b) => ROUTES[a.key].distance - ROUTES[b.key].distance, shade: (a, b) => b.shade - a.shade };
+  return list.sort(by[state.sort] || by.recommended);
+}
+const bestKey = () => Object.keys(ROUTES).map(assess).sort((a, b) => a.weighted - b.weighted)[0].key;
+const route = () => ROUTES[state.route || bestKey()];
+const stepNow = () => route().steps[state.step];
+const remaining = () => route().steps.slice(state.step).reduce((t, s) => t + s.metres, 0);
+
+/* =================== Helpers =================== */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function speak(text, force) {
+  if (!state.audio && !force) return;
+  try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.rate = 0.9; u.lang = "en-SG"; speechSynthesis.speak(u); } catch (e) {}
+}
+function toast(msg) { state.toast = msg; renderPhone(); clearTimeout(toast.t); toast.t = setTimeout(() => { state.toast = ""; renderPhone(); }, 2600); }
+function buzz() {
+  const w = document.getElementById("watchCase");
+  w.classList.remove("buzz"); void w.offsetWidth; w.classList.add("buzz");
+  clearTimeout(buzz.t); buzz.t = setTimeout(() => w.classList.remove("buzz"), 1200);
+  try { navigator.vibrate && navigator.vibrate([60, 80, 60]); } catch (e) {}
+}
+function photoBox(s, cls, opts = {}) {
+  if (!s.photo) return `<div class="ph ${cls}"><div class="ph-none">${I.camera}<span>No Street View here.<br>Photo to be taken on site.</span></div>${opts.chev && chevSVG[s.turn] ? chevSVG[s.turn] : ""}</div>`;
+  const h = s.hl, below = h.y + h.h < 72;
+  return `<div class="ph ${cls}" data-cx="${h.x + h.w / 2}" data-cy="${h.y + h.h / 2}">
+    <div class="ph-in"><img src="${s.photo}" alt="${esc(s.landmark)}">
+      <div class="hl" style="left:${h.x}%;top:${h.y}%;width:${h.w}%;height:${h.h}%"></div>
+      ${opts.tag ? `<div class="hl-tag${below ? "" : " above"}" style="left:${Math.min(h.x + 2, 40)}%;top:${below ? h.y + h.h : h.y}%">${I.building}<span>Look for<br><b>${esc(s.landmark)}</b></span></div>` : ""}
+    </div>
+    ${opts.chev && chevSVG[s.turn] ? chevSVG[s.turn] : ""}
+    ${s.credit ? `<span class="credit">Street View · ${s.credit}</span>` : ""}
+  </div>`;
+}
+/* Fit each 4:3 photo to its box like object-fit: cover, but slide it so the landmark stays in view. */
+function fitPhotos(root) {
+  root.querySelectorAll(".ph[data-cx]").forEach(box => {
+    const w = box.clientWidth, h = box.clientHeight, inner = box.querySelector(".ph-in");
+    if (!w || !h) return;
+    let iw = h * 4 / 3, ih = h;
+    if (iw < w) { iw = w; ih = w * 3 / 4; }
+    const left = Math.min(0, Math.max(w - iw, w / 2 - (+box.dataset.cx / 100) * iw));
+    const top = Math.min(0, Math.max(h - ih, h / 2 - (+box.dataset.cy / 100) * ih));
+    Object.assign(inner.style, { width: iw + "px", height: ih + "px", left: left + "px", top: top + "px" });
+  });
+}
+const statusIcons = `<svg viewBox="0 0 46 12" aria-hidden="true"><g fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/><path d="M24 4.5a7 7 0 0 1 9 0l-1.3 1.4a5 5 0 0 0-6.4 0zM26.3 7a3.6 3.6 0 0 1 4.4 0l-2.2 2.4z"/><rect x="35" y="1.5" width="9" height="9" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="36.4" y="3" width="6.2" height="6" rx="1.2"/></g></svg>`;
+
+/* =================== Phone screens =================== */
+const S = {};
+
+S.onboard = () => `
+  <div class="content">
+    <div class="logo">${I.leaf}<div><b>SilverSight AI</b><span class="muted small">A safer way, every day</span></div></div>
+    <div class="dots-progress"><i class="on"></i><i></i><i></i></div>
+    <h1 class="s-title">Let's set up your walking profile</h1>
+    <p class="s-sub">This helps us find safer and more comfortable routes for you.</p>
+    ${PREFS.map(p => `
+      <button class="pref" data-pref="${p.key}" aria-pressed="${state.prefs[p.key]}">
+        <span class="tile" style="background:${p.tile};color:${p.color}">${I[p.icon]}</span>
+        <span class="txt"><b>${p.label}</b><span>${state.prefs[p.key] ? p.on : p.off}${p.note ? ` · <i>${p.note}</i>` : ""}</span></span>
+        <span class="switch" aria-hidden="true"></span>
+      </button>`).join("")}
+    <div class="row between"><b>Text size</b>
+      <div class="seg" style="width:60%"><button data-large="0" aria-pressed="${!state.large}">Standard</button><button data-large="1" aria-pressed="${state.large}">Large</button></div>
+    </div>
+    <button class="btn primary" data-act="save-prefs">Save my preferences ${I.chevR}</button>
+  </div>`;
+
+S.home = () => `
+  <div class="content">
+    <div class="row between">
+      <div class="row">${I.leaf.replace("<svg", '<svg style="width:34px;height:34px"')}<div><span class="muted small">Good morning,</span><br><b style="font-size:1.25em">Mdm Tan</b></div></div>
+      <button class="avatar" data-go="onboard" aria-label="My walking profile">${I.user}</button>
+    </div>
+    <div class="search">${I.search}<span style="flex:1">Search for a place…</span>${I.mic}</div>
+    <b>Popular destinations</b>
+    <div class="dest-grid">
+      <button class="dest" data-dest="clinic">${I.clinic}Clinic<small>Routes ready</small></button>
+      <button class="dest" data-dest="other">${I.cart}Market<small>Not checked yet</small></button>
+      <button class="dest" data-dest="other">${I.bus}Bus Stop<small>Not checked yet</small></button>
+      <button class="dest" data-dest="other">${I.people}Community Centre<small>Not checked yet</small></button>
+    </div>
+    <div class="sec-h">Saved places<span>View all</span></div>
+    <button class="saved" data-dest="clinic"><img src="photos/amk-006.jpg" alt=""><span class="txt"><b>Ang Mo Kio Polyclinic</b><span>${assess(bestKey()).minutes} min · ${ROUTES[bestKey()].distance} m · ${ROUTES[bestKey()].name}</span></span>${I.heart}</button>
+    <button class="saved" data-dest="other"><img src="photos/test-d.jpg" alt=""><span class="txt"><b>AMK Hub</b><span>Route not checked yet</span></span><span style="color:var(--d-muted)">${I.heartO}</span></button>
+    <button class="saved" data-dest="other"><img src="photos/amk-002.jpg" alt=""><span class="txt"><b>Block 124 (Home)</b><span>You are here</span></span><span style="color:var(--d-muted)">${I.heartO}</span></button>
+  </div>
+  ${tabbar("home")}`;
+
+const tabbar = cur => `<nav class="tabbar">
+  ${[["home", "Home", I.home], ["journeys", "Journeys", I.clock], ["saved", "Saved", I.bookmark], ["onboard", "Profile", I.user]].map(([k, l, ic]) =>
+    `<button data-go="${k === "saved" ? "home" : k}" ${cur === k ? 'aria-current="page"' : ""}>${ic}${l}</button>`).join("")}
+</nav>`;
+
+S.journeys = () => `
+  <div class="content">
+    <h1 class="s-title">Journeys</h1>
+    ${state.journeys.length ? state.journeys.map(j => `<div class="card"><b>${j.to}</b><p class="s-sub">${j.route} · ${j.time}</p>${j.notes.length ? `<div class="chips" style="margin-top:8px">${j.notes.map(n => `<span class="chip amber">${esc(n)}</span>`).join("")}</div>` : ""}</div>`).join("")
+      : `<div class="card"><b>No walks yet</b><p class="s-sub">Finished walks and anything you flag will show here. Flags are shared with planners without your name.</p></div>`}
+  </div>${tabbar("journeys")}`;
+
+S.notReady = () => `
+  <div class="content">
+    <button class="icon-btn" data-go="home" aria-label="Back">${I.back}</button>
+    <h1 class="s-title">This route has not been checked yet</h1>
+    <p>We only guide you on routes that someone has walked and checked. This keeps every turn correct.</p>
+    <button class="btn primary" data-dest="clinic">Go to the Clinic instead</button>
+  </div>`;
+
+function chipsFor(a) {
+  const r = ROUTES[a.key], c = [];
+  c.push(a.shade >= 40 ? `<span class="chip">${I.roof}${a.shade}% shade</span>` : `<span class="chip amber">${I.sun}${a.shade}% shade</span>`);
+  if (r.rest) c.push(`<span class="chip">${I.bench}${r.rest} rest point${r.rest > 1 ? "s" : ""}</span>`);
+  if (r.ramp) c.push(`<span class="chip">${I.slope}Gentle ramp</span>`);
+  if (r.mainRoadM > 300) c.push(`<span class="chip amber">${I.road}${r.mainRoadM} m by main road</span>`);
+  else c.push(`<span class="chip">${I.road}Quiet paths</span>`);
+  if (a.stairs > 1) c.push(`<span class="chip red">${I.stairs}Includes stairs (${a.stairs} sets)</span>`);
+  else if (a.stairs === 1) c.push(`<span class="chip amber">${I.stairs}1 set of steps</span>`);
+  return c.join("");
+}
+const RISK = { low: ["green", "Low risk"], medium: ["amber", "Medium risk"], high: ["red", "High risk"] };
+function ribbon(r) {
+  return `<div class="ribbon" aria-label="Shade along the route">${r.sky.map(v => `<span class="${v === null ? "na" : v < SHADE_SKY ? "sh" : "sn"}"></span>`).join("")}${r.stairsAt.map(m => `<i style="left:${(100 * m / r.distance).toFixed(1)}%"></i>`).join("")}</div>`;
+}
+
+S.routes = () => {
+  const list = ranked(), best = bestKey(), sel = state.route || best;
+  return `
+  <div class="content">
+    <div class="route-head">
+      <button class="icon-btn" data-go="home" aria-label="Back">${I.back}</button>
+      <div><b style="font-size:1.15em">Route to Clinic</b><br><span class="muted small">${DEST.name}</span></div>
+      <img src="${DEST.photo}" alt="">
+    </div>
+    <div class="tabs">${[["recommended", "Recommended"], ["shortest", "Shortest"], ["shade", "Most shade"]].map(([k, l]) => `<button data-sort="${k}" aria-pressed="${state.sort === k}">${l}</button>`).join("")}</div>
+    <div class="hint-bar">${I.info}Ranked by your profile: ${PREFS.filter(p => state.prefs[p.key] && !p.note).map(p => p.label.toLowerCase()).join(", ") || "no preferences"}.</div>
+    ${list.map(a => {
+      const r = ROUTES[a.key], [rc, rl] = RISK[a.level];
+      return `<button class="ropt" data-route="${a.key}" aria-pressed="${sel === a.key}">
+        <span class="top">${I.walk}<span><span class="name">${r.name}${a.key === best ? ' <span class="chip green">Best for you</span>' : ""}</span><br>
+          <span class="meta">${a.minutes} min<small>${r.distance.toLocaleString()} m · ${r.via}</small></span></span>
+          ${sel === a.key ? `<span class="tick">${I.check}</span>` : ""}</span>
+        <span class="chips">${chipsFor(a)}<span class="chip ${rc}">${rl}</span></span>
+        ${ribbon(r)}
+      </button>`;
+    }).join("")}
+    <div class="sticky-foot"><button class="btn primary" data-act="start">Start walking ${I.chevR}</button></div>
+  </div>`;
+};
+
+S.notGuided = () => `
+  <div class="content">
+    <button class="icon-btn" data-go="routes" aria-label="Back">${I.back}</button>
+    <h1 class="s-title">Photos for the ${ROUTES[state.route].name.toLowerCase()} are not ready</h1>
+    <p>Someone from our team needs to walk it and check each turn first. We never guide you with unchecked directions.</p>
+    <div class="warn-line">${I.stairs}This route also has ${ROUTES[state.route].stairsAt.length} sets of stairs.</div>
+    <button class="btn primary" data-route="${bestKey()}" data-then="start">Use the ${ROUTES[bestKey()].name.toLowerCase()} instead</button>
+  </div>`;
+
+S.walk = () => {
+  const r = route(), s = stepNow(), n = r.steps.length, rem = remaining();
+  const next = r.steps[state.step + 1];
+  return `
+  <div class="content bleed">
+    <div style="position:relative">
+      ${photoBox(s, "walk-ph", { tag: true, chev: true })}
+      <div class="instr"><span class="turn">${I.arrow[s.turn] || I.arrow.straight}</span>
+        <span class="t"><b>${s.title}</b><span>${esc(s.toward)}</span></span><span class="dist">${s.metres} m</span></div>
+      <div class="float-btns">
+        <button class="icon-btn" data-act="audio" aria-pressed="${state.audio}" aria-label="Read directions aloud">${I.speaker}</button>
+        <button class="icon-btn" data-act="help" aria-label="I'm not sure">${I.q}</button>
+      </div>
+    </div>
+    <div class="sheet">
+      <div class="steps-dots">${r.steps.map((_, k) => `<i class="${k < state.step ? "done" : k === state.step ? "now" : ""}"></i>`).join("")}</div>
+      ${s.stairs ? `<div class="warn-line">${I.stairs}Steps on this part. Hold the handrail.</div>` : ""}
+      ${s.rest ? `<div class="warn-line rest">${I.bench}${esc(s.rest)}</div>` : ""}
+      ${s.ramp ? `<div class="warn-line rest">${I.slope}Gentle ramp with handrails.</div>` : ""}
+      <div class="minimap"><img src="${s.map}" alt="Map of where you are on the route">
+        <span class="next">${next ? `${I.arrow[next.turn]}Next: ${next.title.toLowerCase()}` : `${I.arrow.arrive}Clinic ahead`}</span></div>
+      <div class="row between">
+        <div class="eta"><b>${Math.ceil(rem / 60)} min (${rem} m)</b><br><span class="muted small">Step ${state.step + 1} of ${n} · ${r.name}</span></div>
+        <button class="btn danger end" data-act="end">${I.x} End</button>
+      </div>
+      <button class="btn primary" data-act="next">${I.check} ${state.step === n - 1 ? "I'm at the clinic" : "I see it · Next"}</button>
+      <div class="row">
+        <button class="btn ghost" data-act="prev">${I.back} Back</button>
+        <button class="btn ghost" data-act="help">${I.q} I'm not sure</button>
+      </div>
+    </div>
+  </div>`;
+};
+
+S.help = () => {
+  const r = route(), s = stepNow();
+  const prevPhoto = [...r.steps.slice(0, state.step + 1)].reverse().find(x => x.photo) || s;
+  return `
+  <div class="content">
+    <div class="help-head">
+      <button class="icon-btn" data-go="walk" aria-label="Back">${I.back}</button>
+      <h2>Need help?</h2>
+      <button class="icon-btn" data-go="walk" aria-label="Close">${I.close}</button>
+    </div>
+    <div class="tabs"><button data-tab="photo" aria-pressed="${state.helpTab === "photo"}">Take a photo</button><button data-tab="last" aria-pressed="${state.helpTab === "last"}">Show last landmark</button></div>
+    ${state.helpTab === "last" ? `
+      ${photoBox(prevPhoto, "", { tag: true }).replace('class="ph ', 'class="ph help-ph ')}
+      <p><b>${esc(prevPhoto.landmark)}</b><br><span class="muted">${esc(prevPhoto.title)}, ${esc(prevPhoto.toward.toLowerCase())}.</span></p>
+    ` : `
+      ${state.upload ? `<img class="upload-prev" src="${state.upload}" alt="Your photo">` : `<div class="card" style="text-align:center"><p style="margin:0">Take a photo of what you see.<br><b>I'll help find where you are.</b></p></div>`}
+      <div class="row" style="justify-content:center;gap:22px">
+        <label class="cam" aria-label="Take a photo">${I.camera}<input class="vh" type="file" accept="image/*" capture="environment" data-upload></label>
+        <label class="gal" aria-label="Choose a photo">${I.gallery}<input class="vh" type="file" accept="image/*" data-upload></label>
+      </div>
+      <div><span class="muted small">No camera? Try a sample photo:</span>
+        <div class="samples" style="margin-top:6px">${SAMPLES.map(x => `<button data-sample="${x.src}"><img src="${x.src}" alt=""><span>${x.label}</span></button>`).join("")}</div></div>
+      ${matchHTML()}
+    `}
+    <button class="list-btn" data-act="repeat">${I.redo}<span>Show directions again</span>${I.chevR}</button>
+    <button class="list-btn" data-act="helper">${I.phone}<span>Contact a helper</span>${I.chevR}</button>
+    ${state.showHelper ? `<div class="card"><span class="muted small">Call ${HELPER.name}</span><div class="phone-num">${HELPER.phone}</div><p class="small muted" style="margin:6px 0 0">Example contact. Or show this to someone nearby: <b>“I am walking to ${DEST.name}. Can you show me the way?”</b></p></div>` : ""}
+    <button class="list-btn" data-act="end">${I.exit}<span>Exit this route</span>${I.chevR}</button>
+  </div>`;
+};
+
+function matchHTML() {
+  const m = state.match;
+  if (!m) return "";
+  if (m.status === "working") return `<div class="card row"><span class="spinner"></span>Looking for landmarks on your route…</div>`;
+  const r = route();
+  if (m.status === "none") return `<div class="card"><b>I can't match this photo to your route</b><p class="s-sub" style="margin-top:4px">You may be off the route, or the place has changed. I won't guess. Please contact a helper or ask someone nearby.</p><div class="score">Best match ${m.list[0].score.toFixed(2)}, needs 0.42</div></div>`;
+  const c = m.status === "sure" ? m.list.slice(0, 1) : m.list.slice(0, 2);
+  return `<div><b>${m.status === "sure" ? "Possible landmark" : "It could be one of these"}</b></div>
+    ${c.map(x => { const st = r.steps[x.i]; return `<div class="card" style="display:flex;flex-direction:column;gap:10px">
+      <div class="cand"><img src="${st.photo}" alt=""><div><b>${esc(st.landmark)}</b><span class="small muted">Step ${x.i + 1}: ${esc(st.title.toLowerCase())}, ${esc(st.toward.toLowerCase())}. Are you near this landmark?</span><div class="score">Similarity ${x.score.toFixed(2)}</div></div></div>
+      <button class="btn ok" data-jump="${x.i}">${I.check} Yes, this looks right</button></div>`; }).join("")}
+    <button class="btn no" data-act="no-match">${I.x} No, not ${c.length > 1 ? "these" : "this one"}</button>`;
+}
+
+S.arrive = () => `
+  <div class="content">
+    <div class="big-check">${I.check}</div>
+    <h1 class="s-title" style="text-align:center">You have arrived</h1>
+    <p class="s-sub" style="text-align:center">${DEST.name}<br>${DEST.line}</p>
+    ${photoBox(route().steps[route().steps.length - 1], "help-ph", {})}
+    <div class="card" style="display:flex;flex-direction:column;gap:10px"><b>Was anything hard on this walk?</b>
+      <div class="pick">${["A turn was confusing", "A sign was hard to see", "Needed more shade", "Needed a place to rest", "Steps were difficult"].map(t => `<button data-flag="${t}" aria-pressed="${state.flags.has(t)}">${t}</button>`).join("")}</div>
+      <span class="small muted">Shared with planners without your name.</span>
+    </div>
+    <button class="btn primary" data-act="finish">Send and finish</button>
+  </div>`;
+
+/* =================== Watch =================== */
+function watchHTML() {
+  const t = new Date(), time = t.toTimeString().slice(0, 5);
+  const head = `<div class="wtime"><span>SilverSight</span><b>${time}</b></div>`;
+  if (state.screen === "arrive") return `${head}<div style="margin:auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px"><span class="wturn" style="background:var(--green)">${I.check}</span><div class="wtitle">You've arrived</div><div class="wland">${DEST.name}</div></div>`;
+  if (!state.walking) {
+    const a = assess(bestKey()), r = ROUTES[bestKey()];
+    return `${head}<div class="wtitle" style="margin-top:4px">Where to?</div>
+      <div class="wlist"><button data-w="start">${I.clinic.replace('aria-hidden="true"', 'aria-hidden="true" style="width:18px;height:18px;color:#26d3c0"')}<span>Clinic<br><span style="color:#9fd9d1;font-size:11px">${a.minutes} min · ${r.name}</span></span></button>
+      <button data-w="other">${I.cart}<span>Market</span></button></div>`;
+  }
+  const r = route(), s = stepNow();
+  if (state.watch === "help") return `${head}<div class="wtitle">Not sure?</div><div class="wlist">
+      <button data-w="photo">${I.camera}Show the photo</button>
+      <button data-w="call">${I.phone}Call ${HELPER.name.split(" ")[0]}</button>
+      <button data-w="phone">${I.q}Help on phone</button>
+      <button data-w="main">${I.back}Back</button></div>`;
+  if (state.watch === "call") return `${head}<div style="margin:auto;text-align:center"><div class="wland">Calling (demo)</div><div class="wtitle">${HELPER.name.split(" ")[0]}</div><div class="wdist" style="margin-top:6px">${HELPER.phone}</div></div><div class="wbtns"><button class="w-q" data-w="main" style="background:#d93a3f">${I.x}End</button></div>`;
+  if (state.watch === "photo") return `${head}${photoBox(s, "wph", {})}<div class="wland">${esc(s.landmark)}</div><div class="wbtns"><button class="w-q" data-w="main">${I.back}</button><button class="w-ok" data-w="next">${I.check}Found</button></div>`;
+  return `${head}
+    <div style="display:flex;gap:10px;align-items:center"><span class="wturn">${I.arrow[s.turn] || I.arrow.straight}</span>
+      <div><div class="wdist">${s.metres}<small> m</small></div><div class="wtitle" style="font-size:15px">${s.title}</div></div></div>
+    <div class="wland">Look for: <b style="color:#fff">${esc(s.watch)}</b></div>
+    ${s.stairs ? `<div class="w-warn">${I.stairs}Steps ahead</div>` : s.rest ? `<div class="w-warn rest">${I.bench}Rest point here</div>` : ""}
+    <div class="wdots">${r.steps.map((_, k) => `<i class="${k <= state.step ? "on" : ""}"></i>`).join("")}</div>
+    <div class="wbtns"><button class="w-q" data-w="help" aria-label="I'm not sure">${I.q}</button><button class="w-ok" data-w="next">${I.check}Next</button></div>`;
+}
+
+/* =================== Render =================== */
+const phoneEl = document.getElementById("phone"), watchEl = document.getElementById("watch");
+function renderPhone() {
+  phoneEl.classList.toggle("large", state.large);
+  phoneEl.innerHTML = `<div class="statusbar${state.screen === "walk" ? " light" : ""}"><span>9:41</span><span class="island"></span>${statusIcons}</div>${(S[state.screen] || S.home)()}${state.toast ? `<div class="toast" role="status">${esc(state.toast)}</div>` : ""}`;
+  const ph = phoneEl.querySelector(".walk-ph"); if (ph) ph.style.height = "430px";
+  phoneEl.querySelectorAll(".help-ph").forEach(x => x.style.height = "200px");
+  phoneEl.querySelectorAll(".ph:not(.walk-ph):not(.help-ph)").forEach(x => x.style.height = "200px");
+  fitPhotos(phoneEl);
+}
+function renderWatch() {
+  watchEl.innerHTML = watchHTML();
+  fitPhotos(watchEl);
+}
+function render() { renderPhone(); renderWatch(); }
+function go(screen) { state.screen = screen; renderPhone(); renderWatch(); const c = phoneEl.querySelector(".content"); if (c) c.scrollTop = 0; }
+
+function startRoute() {
+  const key = state.route || bestKey();
+  if (!ROUTES[key].guided) { state.route = key; return go("notGuided"); }
+  state.route = key; state.step = 0; state.walking = true; state.watch = "main"; state.match = null; state.upload = null;
+  go("walk"); buzz(); announce();
+}
+function announce() { const s = stepNow(); speak(`${s.title}. ${s.toward}. Look for ${s.landmark}.`); }
+function setStep(i) {
+  state.step = i; state.watch = "main"; state.match = null; state.upload = null; state.showHelper = false;
+  go("walk"); buzz(); announce();
+}
+function next() {
+  if (state.step < route().steps.length - 1) return setStep(state.step + 1);
+  state.walking = false; state.flags.clear(); go("arrive"); buzz(); speak("You have arrived at " + DEST.name);
+}
+function endRoute() { state.walking = false; state.watch = "main"; go("home"); toast("Route ended. You can start again any time."); }
+
+/* =================== Photo matching (in-browser stand-in for Gemini) =================== */
+const featCache = {};
+function loadImg(src) { return new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = src; }); }
+function features(im) {
+  const c = document.createElement("canvas"); c.width = 32; c.height = 24;
+  const g = c.getContext("2d", { willReadFrequently: true }); g.imageSmoothingEnabled = true; g.imageSmoothingQuality = "high";
+  g.drawImage(im, 0, 0, im.naturalWidth, im.naturalHeight * 0.92, 0, 0, 32, 24);
+  const d = g.getImageData(0, 0, 32, 24).data, hist = new Array(19).fill(0), lum = new Array(768);
+  for (let p = 0; p < 768; p++) {
+    const r = d[p * 4] / 255, gg = d[p * 4 + 1] / 255, b = d[p * 4 + 2] / 255, mx = Math.max(r, gg, b), mn = Math.min(r, gg, b), s = mx ? (mx - mn) / mx : 0;
+    lum[p] = 0.299 * r + 0.587 * gg + 0.114 * b;
+    let bin;
+    if (s < 0.2 || mx < 0.15) bin = 16 + Math.min(2, Math.floor(mx * 3));
+    else {
+      const dl = mx - mn; let h = mx === r ? ((gg - b) / dl) % 6 : mx === gg ? (b - r) / dl + 2 : (r - gg) / dl + 4;
+      h *= 60; if (h < 0) h += 360;
+      bin = Math.min(7, Math.floor(h / 45)) * 2 + (s < 0.5 ? 0 : 1);
+    }
+    hist[bin]++;
+  }
+  const grid = [];
+  for (let y = 0; y < 12; y++) for (let x = 0; x < 16; x++) grid.push((lum[2 * y * 32 + 2 * x] + lum[2 * y * 32 + 2 * x + 1] + lum[(2 * y + 1) * 32 + 2 * x] + lum[(2 * y + 1) * 32 + 2 * x + 1]) / 4);
+  const m = grid.reduce((t, v) => t + v, 0) / 192, sd = Math.sqrt(grid.reduce((t, v) => t + (v - m) ** 2, 0) / 192) + 1e-6;
+  return { hist: hist.map(v => v / 768), grid: grid.map(v => (v - m) / sd) };
+}
+function similarity(a, b) {
+  let hi = 0, ncc = 0;
+  for (let i = 0; i < 19; i++) hi += Math.min(a.hist[i], b.hist[i]);
+  for (let i = 0; i < 192; i++) ncc += a.grid[i] * b.grid[i];
+  return 0.6 * hi + 0.4 * Math.max(0, ncc / 192);
+}
+async function identify(src) {
+  state.upload = src; state.match = { status: "working" }; renderPhone();
+  try {
+    const f = features(await loadImg(src)), r = route(), list = [];
+    for (let i = 0; i < r.steps.length; i++) {
+      const s = r.steps[i]; if (!s.photo) continue;
+      featCache[s.photo] = featCache[s.photo] || features(await loadImg(s.photo));
+      list.push({ i, score: similarity(f, featCache[s.photo]) });
+    }
+    list.sort((a, b) => b.score - a.score);
+    const top = list[0].score, margin = top - (list[1] ? list[1].score : 0);
+    state.match = { list, status: top >= 0.6 && margin >= 0.08 ? "sure" : top >= 0.42 ? "maybe" : "none" };
+  } catch (e) {
+    state.match = { list: [{ score: 0 }], status: "none" };
+  }
+  renderPhone();
+}
+
+/* =================== Events =================== */
+phoneEl.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const d = b.dataset;
+  if (d.pref) { state.prefs[d.pref] = !state.prefs[d.pref]; save(); return renderPhone(); }
+  if (d.large) { state.large = d.large === "1"; save(); return renderPhone(); }
+  if (d.dest) { if (d.dest !== "clinic") return go("notReady"); state.route = null; return go("routes"); }
+  if (d.route) { state.route = d.route; if (d.then === "start") return startRoute(); return renderPhone(); }
+  if (d.sort) { state.sort = d.sort; return renderPhone(); }
+  if (d.tab) { state.helpTab = d.tab; return renderPhone(); }
+  if (d.sample) return identify(d.sample);
+  if (d.jump) { toast(`Great. Continuing from step ${+d.jump + 1}.`); return setStep(+d.jump); }
+  if (d.flag) { state.flags.has(d.flag) ? state.flags.delete(d.flag) : state.flags.add(d.flag); return renderPhone(); }
+  if (d.go) { if (d.go === "walk") state.watch = "main"; return go(d.go); }
+  switch (d.act) {
+    case "save-prefs": save(); go("home"); return toast("Preferences saved.");
+    case "start": return startRoute();
+    case "next": return next();
+    case "prev": return state.step > 0 ? setStep(state.step - 1) : go("routes");
+    case "help": state.helpTab = "photo"; state.showHelper = false; return go("help");
+    case "audio": state.audio = !state.audio; renderPhone(); if (state.audio) announce(); else try { speechSynthesis.cancel(); } catch (x) {} return;
+    case "end": return endRoute();
+    case "repeat": go("walk"); return speak(`${stepNow().title}. ${stepNow().toward}. Look for ${stepNow().landmark}.`, true);
+    case "helper": state.showHelper = !state.showHelper; return renderPhone();
+    case "no-match": state.match = { list: state.match.list, status: "none" }; return renderPhone();
+    case "finish":
+      state.journeys.unshift({ to: DEST.name, route: route().name, time: new Date().toTimeString().slice(0, 5), notes: [...state.flags] });
+      state.flags.clear(); go("home"); return toast("Thank you. Your notes help fix confusing places.");
+  }
+});
+phoneEl.addEventListener("change", e => {
+  const inp = e.target.closest("[data-upload]"); if (!inp || !inp.files[0]) return;
+  const fr = new FileReader(); fr.onload = () => identify(fr.result); fr.readAsDataURL(inp.files[0]);
+});
+watchEl.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const w = b.dataset.w;
+  if (w === "start") { state.route = null; return startRoute(); }
+  if (w === "other") { go("notReady"); return buzz(); }
+  if (w === "next") return next();
+  if (w === "phone") { state.watch = "main"; state.helpTab = "photo"; go("help"); return buzz(); }
+  state.watch = w; renderWatch();
+});
+window.addEventListener("resize", () => { fitPhotos(phoneEl); fitPhotos(watchEl); });
+setInterval(renderWatchTime, 30000);
+function renderWatchTime() { if (state.watch !== "photo") renderWatch(); }
+
+render();
+</script>
+
+</html>
